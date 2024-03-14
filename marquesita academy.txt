@@ -1,0 +1,31 @@
+Marquesita academy
+
+objetivo : brindar conocimiento a quien necesite a traves de capacitaciones online con videos grabados
+
+User expirience:
+
+Para personas con y sin conocimiento previo. 
+
+Tendra capacitaciones para principiantes, intermedios y avanzados
+
+
+
+
+
+Sin ingresar a la pagina debe poder ver informacion de reelevancia para atraer al cliente
+Mas de 5 años complaciendo las necesidades de mis clientes
+
+
+
+
+
+debe poder ver el logo y la informacion de la profosora NFD
+Debe poder mostrar trabajos tanto de marquesita como de las alumnos y tambien sentencias de alumnos para aumentar legitibidad
+Debe poder ver el temario de los cursos a dar.
+
+->
+Debe poder ingresar a la pagina
+
+la version paga -> 
+	Desbloquea videos de capacitacion a los cursos
+	-> Para recibir la cerficación debe pasar los examenes y avances. 
