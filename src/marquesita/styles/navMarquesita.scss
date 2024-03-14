@@ -1,0 +1,48 @@
+.navMarquesita__{
+  &container{
+    display: flex;
+    height: 4rem;
+    width: 100%;
+    position: fixed;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.404);
+  }
+
+  &list{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+
+  }
+
+
+
+  &item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 10rem;
+    
+    color: #e6e6e6;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+
+  &instagram_container{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e6e6e6;
+  }
+
+
+}
