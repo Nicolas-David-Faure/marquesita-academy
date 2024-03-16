@@ -1,10 +1,11 @@
 import React from 'react'
 import '../styles/home.scss'
+import { Banner } from '../commons/Banner'
 export const Home = () => {
   return (
     <div className='home__container'>
-      
-      <div className='home__title'>
+      <Banner />
+      {/*<div className='home__title'>
 
         <h1>Marquesita</h1>
 
@@ -15,7 +16,7 @@ export const Home = () => {
       <div className="home__promotion">
           <span className="home__promotion__span">¡Inscribite ahora! </span>
           <span className="home__promotion__span">y obtené un 10% de descuento</span>
-      </div>
+  </div>*/}
 
 
     </div>
