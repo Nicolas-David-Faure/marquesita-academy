@@ -1,0 +1,54 @@
+.home__{
+
+    &container{
+        display: flex;
+        flex-direction: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100vh;
+        width: 100%;
+    
+
+        background-image: url(../assets/img/banner.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+    }
+
+    &promotion{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        color: #e6e6e6;
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        text-align: start;
+
+        
+    }
+
+
+    &title{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        color: #e6e6e6;
+        font-size: 1.4rem;
+
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+
+        h1{
+            text-transform: capitalize;
+            margin: 0;
+        }
+    }
+
+     
+}
