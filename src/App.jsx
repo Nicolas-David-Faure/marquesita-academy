@@ -3,9 +3,9 @@ import { Home } from "./comp/Home";
 import { Routes , Route } from 'react-router-dom'
 import { Header } from "./comp/Header";
 import './App.css';
+import { Courses } from "./comp/Courses";
+
 export function App (){
-
-
 
   return (
 
@@ -14,6 +14,7 @@ export function App (){
       
       <Home />
       <Aboutme />
+      <Courses />
     </main>
   )
 }

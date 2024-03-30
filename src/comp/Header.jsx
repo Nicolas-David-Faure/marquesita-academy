@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/header.scss";
 import { NavMarquesita } from "./NavMarquesita";
+
+import logoCorona from '../assets/img/logos/corona-sb.png'
 import logoMarquesita from "../assets/img/marquesita_academy_logo.png";
 import logoInstagram from "../assets/img/instagramLogo.svg";
 
@@ -12,7 +14,7 @@ export const Header = () => {
 
       <img
         className="header__logo"
-        src={logoMarquesita}
+        src={logoCorona}
         alt="marquesita academy logo"
       />
       <NavMarquesita />

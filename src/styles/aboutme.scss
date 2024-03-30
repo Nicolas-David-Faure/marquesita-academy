@@ -1,9 +1,59 @@
+@import '../styles/variables.scss';
+
 .aboutme__{
   
 
   &container{
+    display: flex;
     min-height: 100vh;
     width: 100%;
     
+    padding-top: 2rem;
+
+    
+    @media screen and (width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+
+  &text{
+  
+    display: flex;
+    padding: 0 5rem;
+    flex-direction: column;
+    justify-content: center;
+   
+    
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.5;
+
+    h3{
+      text-transform: uppercase;
+      text-shadow: 2px 2px 2px #000;
+      color: $color-secundario;
+
+    }
+    p{
+
+      text-align: start;
+      background-color: #ffffff3a;
+      padding: 1rem;
+      border-radius: 5px;
+      
+      font-weight: 100;
+      strong{
+        color: $color-secundario;
+      }
+    }
+  }
+  &imagen{
+    width: 100% ;
+    display: flex;
+
+    img{
+      height: 550px;
+    }
   }
 }

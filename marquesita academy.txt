@@ -29,3 +29,54 @@ Debe poder ingresar a la pagina
 la version paga -> 
 	Desbloquea videos de capacitacion a los cursos
 	-> Para recibir la cerficación debe pasar los examenes y avances. 
+
+	cursos a dar: 
+		Extensiones de pestañas:
+			tecnica clasica:
+				Introduccion a la tecnica
+				anatomia del ojo
+				tricologia de la pestaña	
+				ciclo de vida
+				grosores, curvas, longitudes
+				Distancia de colocacion
+				finalizacion NG
+				Diseños para cada tipos de ojos
+				Técnicas de aislamiento
+				Tecnicas para adhesivo
+				Materiales de calidad, ficha de concentimiento
+				Preparacion de la pestaña natuaral
+				Tecnica de colocacion
+				Service
+				adhesivos
+				remocion
+				Seguridad e higiene
+				cuidados pre y post colocacion
+				Patologias , enfermedades , contra indicaciones
+
+			tecnica clasica avanzada:
+				Direccionamiento
+				trabajo en capas y filas
+				Mapping
+				Tapping 
+				deeping
+				curvas modernas
+				retencion
+				Peso y fibras correctas
+				adhesivos: stiky, retencion, posibles problemas
+
+
+			fibras tecnologicas
+			fibras tecnologicas avanzada
+			Efecto rimel / efecto whet
+			Efecto rimel / efecto whet avanzado
+		
+		Lamination pestaña:
+			Laminacion inicial
+			Laminacion avanzada
+			Laminacion cejas
+			
+			
+		Cejas perfectas: 
+			Bisagismo + Color en cejas
+			microblading	micropigmentacion cejas y labios -> Proximamente
+
