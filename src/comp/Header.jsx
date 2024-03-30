@@ -5,6 +5,7 @@ import { NavMarquesita } from "./NavMarquesita";
 import logoCorona from '../assets/img/logos/corona-sb.png'
 import logoMarquesita from "../assets/img/marquesita_academy_logo.png";
 import logoInstagram from "../assets/img/instagramLogo.svg";
+import { Auth } from "../commons/auth/Auth";
 
 export const Header = () => {
 
@@ -23,6 +24,8 @@ export const Header = () => {
         <a href="https://www.instagram.com/marquesita.20/?ref=playak.com&hl=pa" target="_blank">
         <img src={logoInstagram} /></a>
       </div>
+
+      <Auth />
     </div>
   );
 };

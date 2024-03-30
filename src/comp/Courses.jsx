@@ -58,7 +58,7 @@ export const Courses = () => {
           <h2>{curso.title}</h2>
         {
           curso.temarios.map((temario, index) => {
-            return <li className="courses__temarios_lista">{temario}</li>
+            return <li key={index } className="courses__temarios_lista">{temario}</li>
           })
         }
         </ul>
