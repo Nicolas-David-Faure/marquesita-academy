@@ -5,14 +5,12 @@ import { NavMarquesita } from "./NavMarquesita";
 import logoCorona from '../assets/img/logos/corona-sb.png'
 import logoMarquesita from "../assets/img/marquesita_academy_logo.png";
 import logoInstagram from "../assets/img/instagramLogo.svg";
-import { Auth } from "../commons/auth/Auth";
+import { Auth } from "./auth/Auth";
 
-export const Header = () => {
+export const Header = ({  language }) => {
 
   return (
     <div className="header__container">
-
-
       <img
         className="header__logo"
         src={logoCorona}
@@ -25,7 +23,7 @@ export const Header = () => {
         <img src={logoInstagram} /></a>
       </div>
 
-      <Auth />
+      <Auth language={language} />
     </div>
   );
 };

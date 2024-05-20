@@ -6,10 +6,16 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState:{
     modalState: false,
+    type: null
    },
   reducers: {
-    toggleModal: (state , { payload})=>{
+    toggleAuthModal: (state , { payload})=>{
         state.modalState = payload
+    },
+
+    setAuthType : (state , { payload })=>{
+      state.type = payload.type
+      state.modalState = payload.modalState
     }
 }})
 
@@ -18,4 +24,4 @@ export const authSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { toggleModal } = authSlice.actions
+export const { toggleAuthModal  , setAuthType} = authSlice.actions

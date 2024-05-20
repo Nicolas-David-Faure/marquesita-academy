@@ -54,11 +54,11 @@ export const Courses = () => {
 
     {
       cursos.map((curso, index) => {
-       return <ul className="courses__temarios">
+       return <ul key={index + `${curso}`} className="courses__temarios">
           <h2>{curso.title}</h2>
         {
           curso.temarios.map((temario, index) => {
-            return <li key={index } className="courses__temarios_lista">{temario}</li>
+            return <li key={index} className="courses__temarios_lista">{temario}</li>
           })
         }
         </ul>
