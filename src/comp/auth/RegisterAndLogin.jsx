@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import "./sass/registerAndLogin.scss";
 
 //firebase
-import { auth } from "../../config/config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { addUserToDb, auth, db, searchUserById } from "../../config/config";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, getAuth , sendEmailVerification } from "firebase/auth";
 //spinner
 import { Spinner } from "../../commons/otros/Spinner";
 
 import { useDispatch } from "react-redux";
 import { setAuthType } from "../../store/slice/auth/authSlice";
+
+import { setUser } from "../../store/slice/auth/authSlice";
+import { updateDoc, where , collection, query, doc, getDocs } from "firebase/firestore/lite";
+
 
 export const RegisterAndLogin = ({ type, language = "es" }) => {
   const initialState =
@@ -37,29 +41,64 @@ export const RegisterAndLogin = ({ type, language = "es" }) => {
 
       try {
         setLoading(true);
-        const user = await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password);
+        const { user } = await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password);
+     
+
+        const displayName = `${userInfo.name} ${userInfo.lastname}`;
+        await updateProfile(user, {
+          displayName
+        });
+
+        await addUserToDb({
+          displayName,
+          name: userInfo.name,
+          lastname: userInfo.lastname,
+          email: userInfo.email,
+          uid: user.uid,
+          emailVerified: false,
+        });
+
+        await sendEmailVerification(user);
+      
+        dispatch(setUser({ displayName, email: userInfo.email, photoURL: null, uid: user.uid }));
+
+        setUserInfo(initialState);
         setLoading(false);
       } catch (error) {
         setLoading(false);
-
-        ErrorControl({ error: error });
+        console.log(error);
+        // ErrorControl({ error: error });
       }
-
-      console.log(user);
     } else {
       try {
         setLoading(true);
         const user = await signInWithEmailAndPassword(auth, userInfo.email, userInfo.password);
+        if (!user) {
+          setLoading(false);
+          return;
+        }
+        const colRef = collection(db, "users");
+        const queryRef = query(colRef, where("uid", "==", user.user.uid));
+        const querySnapshot = await getDocs(queryRef);
+        
+        querySnapshot.forEach(async (doc) => {
+            const userRef = doc.ref;
+            await updateDoc(userRef, { lastLogin: new Date() });
 
-        console.log(user);
-
+          
+        });
+        
+        
+   
+        dispatch(setUser({ displayName: user.displayName, email: user.email, photoURL: user.photoURL, uid: user.uid }));
+        setUserInfo(initialState);
         setLoading(false);
       } catch (error) {
         setLoading(false);
+
+        console.log(error);
         ErrorControl({ error: error });
       }
-
-      console.log(userInfo);
     }
   };
 
@@ -134,3 +173,5 @@ const ErrorControl = ({ error }) => {
 
   return alert(errors[errorCode] || "Error desconocido");
 };
+
+

@@ -1,8 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth  } from "firebase/auth";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getAuth } from "firebase/auth";
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore/lite';
 
+//services
+import { searchUserById } from "./services/users/searchUserById";
+import { addUserToDb } from "./services/users/addUserToDb";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,7 +29,6 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 
-// Get a list of cities from your database
 
 async function getPrueba(db) {
   const pruebaCol = collection(db, 'prueba');
@@ -34,5 +36,12 @@ async function getPrueba(db) {
   const cityList = citySnapshot.docs.map(doc => doc.data());
   return cityList;
 }
-export { db , getPrueba , auth };
+
+
+
+
+
+
+
+export { db , getPrueba , auth , addUserToDb , searchUserById  };
 

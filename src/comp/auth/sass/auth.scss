@@ -11,3 +11,18 @@
 
     position: relative;
 }
+
+
+.auth__user{
+    border: 1px solid #fffcfc84;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    position: relative;
+    &:hover{
+        background-color: #fffcfc84;
+    }
+}
