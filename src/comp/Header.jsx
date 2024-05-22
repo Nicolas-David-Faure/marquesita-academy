@@ -16,7 +16,7 @@ export const Header = ({  language }) => {
         src={logoCorona}
         alt="marquesita academy logo"
       />
-      <NavMarquesita />
+      <NavMarquesita  language={language}/>
 
       <div className="header__instagram_container">
         <a href="https://www.instagram.com/marquesita.20/?ref=playak.com&hl=pa" target="_blank">

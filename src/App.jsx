@@ -10,7 +10,7 @@ import { Home } from "./comp/Home";
 import { Aboutme } from "./comp/Aboutme";
 import { Header } from "./comp/Header";
 import { Courses } from "./comp/Courses";
-
+import { Profile } from "./comp/profile/Profile";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAuthModal, setUser } from "./store/slice/auth/authSlice";
@@ -44,10 +44,12 @@ export function App() {
   return (
     <main onClick={() => dispatch(toggleAuthModal(false))} className="app__container">
       <Header language={language} />
-
-      <Home language={language} />
-      <Aboutme language={language} />
-      <Courses language={language} />
+      <Routes>
+        <Route path="/*" element={<Home language={language} />} />
+        <Route path="/profile" element={<Profile language={language} user={user} />} />
+      </Routes>
+    
+      
     </main>
   );
 }
