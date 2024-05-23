@@ -1,11 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore/lite";
 
 //services
 import { searchUserById } from "./services/users/searchUserById";
 import { addUserToDb } from "./services/users/addUserToDb";
+import { updateUserEmailVerified } from "./services/users/updateUserEmailVerified";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,7 +19,7 @@ const firebaseConfig = {
   storageBucket: "marquesita-academy.appspot.com",
   messagingSenderId: "474219371924",
   appId: "1:474219371924:web:761a0d5e9a9a6634a7c381",
-  measurementId: "G-T70XTCD8J8"
+  measurementId: "G-T70XTCD8J8",
 };
 
 // Initialize Firebase
@@ -28,20 +29,11 @@ const db = getFirestore(app);
 
 const auth = getAuth(app);
 
-
-
 async function getPrueba(db) {
-  const pruebaCol = collection(db, 'prueba');
+  const pruebaCol = collection(db, "prueba");
   const citySnapshot = await getDocs(pruebaCol);
-  const cityList = citySnapshot.docs.map(doc => doc.data());
+  const cityList = citySnapshot.docs.map((doc) => doc.data());
   return cityList;
 }
 
-
-
-
-
-
-
-export { db , getPrueba , auth , addUserToDb , searchUserById  };
-
+export { db, getPrueba, auth, addUserToDb, searchUserById, updateUserEmailVerified };

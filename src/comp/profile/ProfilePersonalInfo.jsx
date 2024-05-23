@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './scss/profilePersonalInfo.scss'
+//icons
+import { StreetViewUserIcon } from '../../commons/icons/StreetViewUserIcon'
+import { UserInvalidateIcon } from '../../commons/icons/UserInvalidateIcon'
+import { UserValidateIcon } from '../../commons/icons/UserValidateIcon'
+//framer-motion
+import { motion } from 'framer-motion'
 export const ProfilePersonalInfo = ({language , user}) => {
-
+  if(!user) return null
 
   // courses: [],
   //   photoURL: null,
@@ -16,20 +22,118 @@ export const ProfilePersonalInfo = ({language , user}) => {
   //   isAdmin: true,
   //   lastLogin: '22/5/2024',
   //   emailVerified: true
-  console.log(user)
+
+
+
+  const role = user.isAdmin ? language === 'es' ? 'Administrador' : 'Admin' : user.isTeacher ? language === 'es' ? 'Profesor' : 'Teacher' : language === 'es' ? 'Estudiante' : 'Student'
   return (
     <div className='profilePersonalInfo__container'>
-      <div className='profilePersonalInfo__photo'>
-        {
-          user.photoURL === null ? <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="profile"/> : null
-        }
-       
+      <div className="profilePersonalInfo__basicInfo">
+
+        <div className='profilePersonalInfo__basicInfo_photo'>
+          
+            <img src={`${user.photoURL === null ? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" : user.photoURL }`} alt="profile"/>
+      
+        
+        </div>
+        <div className='profilePersonalInfo__basicInfo_info'>
+          <p>{user.displayName}</p>
+          <p>{role}</p>
+
+          <p>{user.email}</p>
+        </div> 
       </div>
-      <div className='profilePersonalInfo__info'>
-        <h4>{language === "es" ? 'Nombre' : 'Name'}: {user.name}</h4>
-        <h4>{language === "es" ? 'Apellido' : 'Lastname'}: {user.lastname}</h4>
-        <h4>{language === "es" ? 'Correo electronico' : 'Email'}: {user.email}</h4>
-      </div> 
+
+     <ProfilePersonalInfoExtraInfo  language={language} user={user} />
+
     </div>
+  )
+}
+
+
+const ProfilePersonalInfoExtraInfo = ({language , user}) => {
+
+  const iconsSize = {
+    width : "4rem",
+    height : "4rem"
+  }
+
+  const iconsUser = user.emailVerified ? <UserValidateIcon {...iconsSize} /> : <UserInvalidateIcon {...iconsSize} />
+
+  const extraInfo = {
+    es: [
+      {
+        icon : <StreetViewUserIcon  {...iconsSize} />,
+        textHover : "Fecha de registro",
+        text: '21/5/2024'
+      },
+      {
+        icon : iconsUser,
+        text : null,
+        textHover:  user.emailVerified ? "Usuario verificado" : "Usuario no verificado"
+      },
+    ],
+    en: [
+      {
+        icon : <StreetViewUserIcon   {...iconsSize}/>,
+        text : '21/5/2024',
+        textHover : "Register date"
+      },
+      {
+        icon : iconsUser,
+        text : null,
+        textHover:  user.emailVerified ? "User verified" : "User not verified"
+      },
+    ]
+  }
+
+  
+
+  return (
+
+    <div className='profilePersonalInfo__extraInfo'>
+      {extraInfo[language].map((item , index) => (
+        <ProfilePersonalInfoExtraInfoItem key={index} icon={item.icon} text={item.text} textHover={item.textHover} />
+      ))}
+
+
+    </div>
+
+  )
+}
+
+const ProfilePersonalInfoExtraInfoItem = ({icon , text , textHover}) => {
+  const [hover , setHover] = useState(false)
+
+
+
+  const variants = {
+    hidden : {
+      opacity : 0,
+      y: -10
+    },
+    visible : {
+      opacity : 1,
+      y: "-100%"
+    }
+  }
+  return (
+    <motion.div 
+      
+      onHoverStart={() => setHover(true)}
+      onHoverEnd={() => setHover(false)}
+    
+    className='profilePersonalInfo__extraInfo_item'>
+      <figure>
+        {icon}
+      </figure>
+      <p>{text}</p>
+      <motion.p 
+        initial='hidden'
+        animate={hover ? 'visible' : 'hidden'}
+        transition={{duration : 0.3}}
+        variants={variants}
+      className='profilePersonalInfo__extraInfo_item_hover'>{textHover}</motion.p>
+    </motion.div>
   )
 }

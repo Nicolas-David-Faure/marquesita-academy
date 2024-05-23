@@ -14,30 +14,15 @@ import { Profile } from "./comp/profile/Profile";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAuthModal, setUser } from "./store/slice/auth/authSlice";
+import { useAuthStateListener } from "./hooks/useAuthStateListener";
 
 export function App() {
   const language = useSelector((state) => state.languageSlice.language);
   const user = useSelector((state) => state.authSlice.user);
 
   const dispatch = useDispatch();
+  useAuthStateListener()
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-
-      console.log(user.reloadUserInfo.lastLoginAt)
-  
-      if (user) {
-        const { uid } = user;
-        searchUserById(uid)
-          .then((userFinded) => {
-            dispatch(setUser({...userFinded , emailVerified: user.emailVerified}));
-          })
-          .catch((e) => console.error(e));
-      } else {
-        dispatch(setUser(null));
-      }
-    });
-  }, []);
 
   console.log(user);
 
@@ -46,7 +31,7 @@ export function App() {
       <Header language={language} />
       <Routes>
         <Route path="/*" element={<Home language={language} />} />
-        <Route path="/profile" element={<Profile language={language} user={user} />} />
+        <Route path="/profile/:uid" element={<Profile language={language} user={user} />} />
       </Routes>
     
       

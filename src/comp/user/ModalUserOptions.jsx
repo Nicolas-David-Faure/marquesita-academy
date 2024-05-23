@@ -10,11 +10,13 @@ import { setUser } from '../../store/slice/auth/authSlice'
 //components
 
 
-export const ModalUserOptions = ({ language }) => {
+export const ModalUserOptions = ({ language  }) => {
   const {user} = useSelector(state => state.authSlice)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+
+  console.log(user)
   const handleSingOut = () => {
     signOut(auth).then(()=>{
       dispatch(setUser(null))
@@ -32,7 +34,7 @@ export const ModalUserOptions = ({ language }) => {
     <div className='modalUserOptions__main'>
      <h4>Hola {user.displayName}!</h4>
         <ul>
-          <li onClick={()=>handleNavigate('/profile')}>{language === "es" ? 'Perfil' : 'Profile'}</li>
+          <li onClick={()=>handleNavigate(`/profile/${user.uid}`)}>{language === "es" ? 'Perfil' : 'Profile'}</li>
           <li onClick={()=>handleNavigate('/profile/myCourses')}>{language === "es" ? 'Mis cursos' : 'My courses'}</li>
           <li onClick={()=>handleNavigate('/settings')}>{language === "es" ? 'Configuracion' : 'Settings'}</li>
           <li onClick={handleSingOut}>{language === "es" ? 'Cerrar sesion' : 'Logout'}</li>

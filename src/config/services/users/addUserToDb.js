@@ -19,6 +19,7 @@ export async function addUserToDb(user) {
     isStudent: true,
     createdAt: new Date(),
     lastLogin: new Date(),
+    emailVerified: user.emailVerified
   }
 
   try {
