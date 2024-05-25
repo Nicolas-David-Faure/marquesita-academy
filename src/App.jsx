@@ -20,6 +20,8 @@ export function App() {
   const language = useSelector((state) => state.languageSlice.language);
   const user = useSelector((state) => state.authSlice.user);
 
+
+
   const dispatch = useDispatch();
   useAuthStateListener()
 

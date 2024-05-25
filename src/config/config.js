@@ -2,11 +2,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore/lite";
-
+import { getStorage } from "firebase/storage";
 //services
 import { searchUserById } from "./services/users/searchUserById";
 import { addUserToDb } from "./services/users/addUserToDb";
 import { updateUserEmailVerified } from "./services/users/updateUserEmailVerified";
+import { handleImageUpload } from "./services/users/handleImageUpload";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,6 +30,8 @@ const db = getFirestore(app);
 
 const auth = getAuth(app);
 
+const storage = getStorage(app);
+
 async function getPrueba(db) {
   const pruebaCol = collection(db, "prueba");
   const citySnapshot = await getDocs(pruebaCol);
@@ -36,4 +39,4 @@ async function getPrueba(db) {
   return cityList;
 }
 
-export { db, getPrueba, auth, addUserToDb, searchUserById, updateUserEmailVerified };
+export { db, getPrueba, auth, addUserToDb, searchUserById, updateUserEmailVerified, storage, handleImageUpload };

@@ -1,13 +1,24 @@
-import React, { useState } from 'react'
-import './scss/profilePersonalInfo.scss'
+import React, { useState } from "react";
+import "./scss/profilePersonalInfo.scss";
 //icons
-import { StreetViewUserIcon } from '../../commons/icons/StreetViewUserIcon'
-import { UserInvalidateIcon } from '../../commons/icons/UserInvalidateIcon'
-import { UserValidateIcon } from '../../commons/icons/UserValidateIcon'
+import { StreetViewUserIcon } from "../../commons/icons/StreetViewUserIcon";
+import { UserInvalidateIcon } from "../../commons/icons/UserInvalidateIcon";
+import { UserValidateIcon } from "../../commons/icons/UserValidateIcon";
+import { PenEditIcon } from "../../commons/icons/PenEditIcon";
+import { CameraIcon } from "../../commons/icons/CameraIcon";
 //framer-motion
-import { motion } from 'framer-motion'
-export const ProfilePersonalInfo = ({language , user}) => {
-  if(!user) return null
+import { motion } from "framer-motion";
+
+//redux
+import { useDispatch, useSelector } from "react-redux";
+import { handleImageUpload } from "../../config/config";
+import { updateUserPhotoURL } from "../../config/services/users/updateUserPhotoURL";
+import { setUserByPropertie } from "../../store/slice/auth/authSlice";
+export const ProfilePersonalInfo = ({ language, user }) => {
+  const userAuth = useSelector((state) => state.authSlice.user);
+  if (!user) return null;
+  const dispatch = useDispatch();
+  const isUserAuth = userAuth.uid === user.uid;
 
   // courses: [],
   //   photoURL: null,
@@ -23,117 +34,134 @@ export const ProfilePersonalInfo = ({language , user}) => {
   //   lastLogin: '22/5/2024',
   //   emailVerified: true
 
+  const handleImageChange = async (e) => {
 
+    const file = e.target.files[0];
+    if (e.target.files && file) {
 
-  const role = user.isAdmin ? language === 'es' ? 'Administrador' : 'Admin' : user.isTeacher ? language === 'es' ? 'Profesor' : 'Teacher' : language === 'es' ? 'Estudiante' : 'Student'
+    const photoURL =  await handleImageUpload(file , 'users/profile_images');
+    const resp =  await updateUserPhotoURL(userAuth.uid, photoURL);
+    dispatch(setUserByPropertie({propertie: 'photoURL' , value: photoURL}))
+    console.log(resp)
+    }
+  };
+
+  const handleEditProfile = (type) => {
+    console.log("edit profile");
+  };
+
+  const role = user.isAdmin
+    ? language === "es"
+      ? "Administrador"
+      : "Admin"
+    : user.isTeacher
+    ? language === "es"
+      ? "Profesor"
+      : "Teacher"
+    : language === "es"
+    ? "Estudiante"
+    : "Student";
   return (
-    <div className='profilePersonalInfo__container'>
+    <div className="profilePersonalInfo__container">
       <div className="profilePersonalInfo__basicInfo">
+        <div className="profilePersonalInfo__basicInfo_photo">
+          {isUserAuth && (
+            <div onClick={() => document.getElementById("fileInput").click()} className="profilePersonalInfo__basicInfo_photo_edit">
+              <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: "none" }} id="fileInput" />
+              <CameraIcon width="2rem" height="2rem" fill="#a0a0a0" />
+            </div>
+          )}
 
-        <div className='profilePersonalInfo__basicInfo_photo'>
-          
-            <img src={`${user.photoURL === null ? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" : user.photoURL }`} alt="profile"/>
-      
-        
+          <img
+            src={`${
+              user.photoURL === null ? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" : user.photoURL
+            }`}
+            alt="profile"
+          />
         </div>
-        <div className='profilePersonalInfo__basicInfo_info'>
+        <div className="profilePersonalInfo__basicInfo_info">
           <p>{user.displayName}</p>
           <p>{role}</p>
 
           <p>{user.email}</p>
-        </div> 
+        </div>
       </div>
 
-     <ProfilePersonalInfoExtraInfo  language={language} user={user} />
-
+      <ProfilePersonalInfoExtraInfo language={language} user={user} />
     </div>
-  )
-}
+  );
+};
 
-
-const ProfilePersonalInfoExtraInfo = ({language , user}) => {
-
+const ProfilePersonalInfoExtraInfo = ({ language, user }) => {
   const iconsSize = {
-    width : "4rem",
-    height : "4rem"
-  }
+    width: "4rem",
+    height: "4rem",
+  };
 
-  const iconsUser = user.emailVerified ? <UserValidateIcon {...iconsSize} /> : <UserInvalidateIcon {...iconsSize} />
+  const iconsUser = user.emailVerified ? <UserValidateIcon {...iconsSize} /> : <UserInvalidateIcon {...iconsSize} />;
 
   const extraInfo = {
     es: [
       {
-        icon : <StreetViewUserIcon  {...iconsSize} />,
-        textHover : "Fecha de registro",
-        text: '21/5/2024'
+        icon: <StreetViewUserIcon {...iconsSize} />,
+        textHover: "Fecha de registro",
+        text: "21/5/2024",
       },
       {
-        icon : iconsUser,
-        text : null,
-        textHover:  user.emailVerified ? "Usuario verificado" : "Usuario no verificado"
+        icon: iconsUser,
+        text: null,
+        textHover: user.emailVerified ? "Usuario verificado" : "Usuario no verificado",
       },
     ],
     en: [
       {
-        icon : <StreetViewUserIcon   {...iconsSize}/>,
-        text : '21/5/2024',
-        textHover : "Register date"
+        icon: <StreetViewUserIcon {...iconsSize} />,
+        text: "21/5/2024",
+        textHover: "Register date",
       },
       {
-        icon : iconsUser,
-        text : null,
-        textHover:  user.emailVerified ? "User verified" : "User not verified"
+        icon: iconsUser,
+        text: null,
+        textHover: user.emailVerified ? "User verified" : "User not verified",
       },
-    ]
-  }
-
-  
+    ],
+  };
 
   return (
-
-    <div className='profilePersonalInfo__extraInfo'>
-      {extraInfo[language].map((item , index) => (
+    <div className="profilePersonalInfo__extraInfo">
+      {extraInfo[language].map((item, index) => (
         <ProfilePersonalInfoExtraInfoItem key={index} icon={item.icon} text={item.text} textHover={item.textHover} />
       ))}
-
-
     </div>
+  );
+};
 
-  )
-}
-
-const ProfilePersonalInfoExtraInfoItem = ({icon , text , textHover}) => {
-  const [hover , setHover] = useState(false)
-
-
+const ProfilePersonalInfoExtraInfoItem = ({ icon, text, textHover }) => {
+  const [hover, setHover] = useState(false);
 
   const variants = {
-    hidden : {
-      opacity : 0,
-      y: -10
+    hidden: {
+      opacity: 0,
+      y: -10,
     },
-    visible : {
-      opacity : 1,
-      y: "-100%"
-    }
-  }
+    visible: {
+      opacity: 1,
+      y: "-100%",
+    },
+  };
   return (
-    <motion.div 
-      
-      onHoverStart={() => setHover(true)}
-      onHoverEnd={() => setHover(false)}
-    
-    className='profilePersonalInfo__extraInfo_item'>
-      <figure>
-        {icon}
-      </figure>
+    <motion.div onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)} className="profilePersonalInfo__extraInfo_item">
+      <figure>{icon}</figure>
       <p>{text}</p>
-      <motion.p 
-        initial='hidden'
-        animate={hover ? 'visible' : 'hidden'}
-        transition={{duration : 0.3}}
+      <motion.p
+        initial="hidden"
+        animate={hover ? "visible" : "hidden"}
+        transition={{ duration: 0.3 }}
         variants={variants}
-      className='profilePersonalInfo__extraInfo_item_hover'>{textHover}</motion.p>
+        className="profilePersonalInfo__extraInfo_item_hover"
+      >
+        {textHover}
+      </motion.p>
     </motion.div>
-  )
-}
+  );
+};

@@ -20,6 +20,14 @@ export const authSlice = createSlice({
     },
     setUser : (state , { payload })=>{
       state.user = payload
+    },
+    setUserByPropertie : (state , { payload })=>{
+
+      if(state.user){
+        state.user[payload.propertie] = payload.value
+      }else{
+        console.error('User not found')
+      }
     }
 }})
 
@@ -28,4 +36,4 @@ export const authSlice = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const { toggleAuthModal  , setAuthType , setUser} = authSlice.actions
+export const { toggleAuthModal  , setAuthType , setUser , setUserByPropertie} = authSlice.actions
