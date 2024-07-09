@@ -2,7 +2,7 @@ import { collection, getDocs, updateDoc, where } from "firebase/firestore/lite";
 import { auth, db } from "../../config";
 import { query } from "firebase/database";
 import { updateProfile  } from "firebase/auth";
-import { handleDeleteFile } from "./handleDeleteFile";
+import { handleDeleteFile } from "../admin/handleDeleteFile";
 
 
 

@@ -16,24 +16,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleAuthModal, setUser } from "./store/slice/auth/authSlice";
 import { useAuthStateListener } from "./hooks/useAuthStateListener";
 
+import { getCourses } from "./config/services/courses/getCourses";
+import { setCourses } from "./store/slice/courses/coursesSlice";
+import { dateToString } from "./utils/dateToString";
+
+
 export function App() {
   const language = useSelector((state) => state.languageSlice.language);
   const user = useSelector((state) => state.authSlice.user);
-
+  const courses = useSelector((state) => state.coursesSlice);
 
 
   const dispatch = useDispatch();
   useAuthStateListener()
 
 
-  console.log(user);
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const courses = await getCourses();
+      
+     const data =  courses.map((course) => {
 
+       return {...course, createdAt: dateToString(course.createdAt)}
+      })
+     
+      dispatch(setCourses(data));
+    };
+    fetchCourses();
+
+  }, [dispatch , courses.courseAdded]);
   return (
     <main onClick={() => dispatch(toggleAuthModal(false))} className="app__container">
       <Header language={language} />
       <Routes>
         <Route path="/*" element={<Home language={language} />} />
-        <Route path="/profile/:uid" element={<Profile language={language} user={user} />} />
+        <Route path="/profile/:uid" element={<Profile courses={courses.courses} language={language} user={user} />} />
       </Routes>
     
       

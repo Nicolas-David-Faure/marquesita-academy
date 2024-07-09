@@ -16,7 +16,7 @@ import { updateUserPhotoURL } from "../../config/services/users/updateUserPhotoU
 import { setUserByPropertie } from "../../store/slice/auth/authSlice";
 export const ProfilePersonalInfo = ({ language, user }) => {
   const userAuth = useSelector((state) => state.authSlice.user);
-  if (!user) return null;
+  if (!user || !userAuth) return null;
   const dispatch = useDispatch();
   const isUserAuth = userAuth.uid === user.uid;
 
@@ -40,9 +40,9 @@ export const ProfilePersonalInfo = ({ language, user }) => {
     if (e.target.files && file) {
 
     const photoURL =  await handleImageUpload(file , 'users/profile_images');
-    const resp =  await updateUserPhotoURL(userAuth.uid, photoURL);
+    await updateUserPhotoURL(userAuth.uid, photoURL);
     dispatch(setUserByPropertie({propertie: 'photoURL' , value: photoURL}))
-    console.log(resp)
+
     }
   };
 

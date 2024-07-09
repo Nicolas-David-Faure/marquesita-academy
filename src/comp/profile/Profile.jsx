@@ -8,7 +8,8 @@ import { ProfilePersonalInfo } from "./ProfilePersonalInfo";
 import { searchUserById } from "../../config/config";
 //spinner
 import { Spinner } from "../../commons/otros/Spinner"; 
-export const Profile = ({ language,  user}) => {
+import { AdminCourses } from "./AdminCourses";
+export const Profile = ({ language,  user , courses}) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(null);
   const { uid } = useParams();
@@ -46,8 +47,13 @@ export const Profile = ({ language,  user}) => {
           <div className="profile__notFound">
             <h2>{language === "es" ? "Perfil no encontrado" : "Profile not found"}</h2>
           </div>
-        ) : (
-          selectedUser && <ProfilePersonalInfo language={language} user={selectedUser} />
+        ) : 
+          selectedUser && (
+          
+          <>
+            <ProfilePersonalInfo language={language} user={selectedUser} />
+           {user?.isAdmin && <AdminCourses courses={courses} language={language} user={selectedUser} />}
+          </>
         )
     
     }

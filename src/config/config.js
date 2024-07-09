@@ -7,7 +7,7 @@ import { getStorage } from "firebase/storage";
 import { searchUserById } from "./services/users/searchUserById";
 import { addUserToDb } from "./services/users/addUserToDb";
 import { updateUserEmailVerified } from "./services/users/updateUserEmailVerified";
-import { handleImageUpload } from "./services/users/handleImageUpload";
+import { handleImageUpload } from "./services/admin/handleImageUpload";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

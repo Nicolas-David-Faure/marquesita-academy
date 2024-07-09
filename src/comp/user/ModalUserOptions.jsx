@@ -19,6 +19,7 @@ export const ModalUserOptions = ({ language  }) => {
   console.log(user)
   const handleSingOut = () => {
     signOut(auth).then(()=>{
+      handleNavigate('/')
       dispatch(setUser(null))
     }).catch((error)=>{
       console.log(error)
