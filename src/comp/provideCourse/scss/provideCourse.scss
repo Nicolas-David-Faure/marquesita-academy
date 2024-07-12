@@ -1,0 +1,20 @@
+
+
+.provideCourse{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 1360px;
+  min-height: 100vh;
+  margin: 0 auto;
+  
+  &__spinner{
+   
+    margin-top: 10rem;
+    display: grid;
+    place-content: center;
+
+  
+  }
+}

@@ -16,9 +16,6 @@ export const AuthBtn = ({type , title}) => {
     
   }
 
-
-
- 
   return (
     <button  onClick={handleModal} className='authBtn'  >{title}</button>
   )

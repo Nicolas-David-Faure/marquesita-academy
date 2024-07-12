@@ -11,6 +11,8 @@ import { Aboutme } from "./comp/Aboutme";
 import { Header } from "./comp/Header";
 import { Courses } from "./comp/Courses";
 import { Profile } from "./comp/profile/Profile";
+import { ProvideCourse } from "./comp/provideCourse/ProvideCourse";
+
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAuthModal, setUser } from "./store/slice/auth/authSlice";
@@ -51,6 +53,7 @@ export function App() {
       <Routes>
         <Route path="/*" element={<Home language={language} />} />
         <Route path="/profile/:uid" element={<Profile courses={courses.courses} language={language} user={user} />} />
+        <Route path='/provide-course/:id' element={<ProvideCourse />} />
       </Routes>
     
       

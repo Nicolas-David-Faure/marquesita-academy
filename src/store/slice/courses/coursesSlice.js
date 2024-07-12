@@ -22,10 +22,11 @@ export const coursesSlice = createSlice({
     },
     toggleCourseAdded: (state) => {
       state.courseAdded = !state.courseAdded;
-    }
+    },
+    
   }
 })
 
-export const { setCourses, addError , toggleCourseAdded } = coursesSlice.actions;
+export const { setCourses, addError , toggleCourseAdded   } = coursesSlice.actions;
 
 export default coursesSlice;

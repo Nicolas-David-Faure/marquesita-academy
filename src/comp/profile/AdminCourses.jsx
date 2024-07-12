@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./scss/adminCourses.scss";
 //icons
 import { PlusIcon } from "../../commons/icons/PlusIcon";
@@ -11,10 +13,14 @@ import { toggleCourseAdded } from "../../store/slice/courses/coursesSlice";
 const URLCourseExample = "https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image/66251efdcbc5.jpg"
 export const AdminCourses = ({ language, user  , courses = []}) => {
   const [showModalAddCourse, setShowModalAddCourse] = useState(false);
-
+  const navigate = useNavigate()
   const handleToggleModalAddCourse = () => {
     setShowModalAddCourse(!showModalAddCourse);
   };
+
+  const handleRedirectToManageCourse =(courseID)=> {
+    navigate(`/provide-course/${courseID}`)
+  }
 
   return (
     <section className="adminCourses">
@@ -34,9 +40,13 @@ export const AdminCourses = ({ language, user  , courses = []}) => {
             <PlusIcon width="150px" height="150px" />
             <figcaption>{language === "es" ? "Agregar curso" : "Add course"}</figcaption>
           </figure>
-          {courses?.map((course, i) => (
-            <AdminCoursesCard key={i} course={course} language={language} />
-          ))}
+          {courses?.map((course, i) => 
+           {
+            
+            
+            return <AdminCoursesCard key={i} course={course} language={language} handleRedirectToManageCourse={handleRedirectToManageCourse} />
+          }
+          )}
           {/* <AdminCoursesCard
             course={{
               title: "Curso de React",
@@ -51,10 +61,10 @@ export const AdminCourses = ({ language, user  , courses = []}) => {
   );
 };
 
-const AdminCoursesCard = ({ course, language }) => {
-
+const AdminCoursesCard = ({ course, language , handleRedirectToManageCourse }) => {
+  console.log(course)
   return (
-    <div className="adminCourses__container-grid-card">
+    <div className="adminCourses__container-grid-card" onClick={()=>handleRedirectToManageCourse(course.id)}>
       <div style={{ backgroundImage: `url(${course.imgURL})` }} className="adminCourses__container-grid-card-img"></div>
       <div className="adminCourses__container-grid-card-info">
         <h3>{course.title}</h3>

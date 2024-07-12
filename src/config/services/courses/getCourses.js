@@ -1,6 +1,5 @@
 import { collection, getDocs } from "firebase/firestore/lite";
 import { db } from "../../config";
-import { dateToString } from "../../../utils/dateToString";
 
 export const getCourses = async () => {
   try {
@@ -21,3 +20,4 @@ export const getCourses = async () => {
     console.error("Error searching user by id: ", error);
   }
 };
+

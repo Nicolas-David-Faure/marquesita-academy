@@ -10,10 +10,8 @@ export const searchUserById = async (uid) => {
   
     const userSnapshot = await getDocs(userCol);
     const user = userSnapshot.docs.map(doc => doc.data()).find(user => user.uid === uid);
-  
-    console.log('se llama')
+
     if(!user) return null;
-   
     user.createdAt = dateToString(user.createdAt);
     user.lastLogin = dateToString(user.lastLogin);
     return user;
