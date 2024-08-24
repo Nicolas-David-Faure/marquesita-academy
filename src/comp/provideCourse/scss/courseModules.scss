@@ -1,6 +1,144 @@
-.courseModules{
-
+.courseModules {
   width: 100%;
-  border: 1px solid yellow;
+  min-height: 20rem;
 
+  background-color: rgba(255, 255, 255, 0.093);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.coursemodule__ {
+  &container {
+    width: 90%;
+    min-height: 3rem;
+    position: relative;
+    background-color: rgb(54, 54, 54);
+    border-radius: 1rem;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.497);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+    &_icon ,   &_icons {
+      position: absolute;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      
+    }
+    &_icon {
+      left: 5px;
+    }
+    &_icons {
+      right: 5px;
+    }
+    h3,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+
+  &module{
+    width: 100%;
+    min-height: 3rem;
+    position: relative;
+    background-color: rgb(54, 54, 54);
+    border-radius: 1rem;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.497);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  &videos{
+    width: 100%;
+    min-height: 3rem;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(54, 54, 54);
+    border-radius: 1rem;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.497);
+
+
+    li{
+      list-style: none;
+    }
+
+    &_add{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem 0;
+      border-radius: 1rem;
+        &:hover{
+          background-color:   rgb(76, 76, 76);
+          cursor: pointer;
+        }
+    }
+  }
+}
+
+.addNewModule {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  min-height: 4rem;
+  padding: 1rem;
+
+  &__btn_ {
+    &add,
+    &cancel {
+      min-width: 20rem;
+    }
+    &add {
+      background-color: rgba(0, 128, 0, 0.835);
+    }
+    &cancel {
+      background-color: rgba(128, 34, 0, 0.835);
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    input,
+    textarea {
+      border-radius: 1rem;
+      width: 20rem;
+      padding: 0.5rem 1rem;
+      outline: none;
+      border: none;
+    }
+    input {
+      height: 2rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      border: 1px solid rgba(255, 255, 255, 0.131);
+      box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.074);
+    }
+    button {
+      background-color: rgba(0, 128, 0, 0.835);
+    }
+
+    textarea {
+      height: 10rem;
+    }
+  }
 }

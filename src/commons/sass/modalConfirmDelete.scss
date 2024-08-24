@@ -1,0 +1,73 @@
+.modalConfirmDelete__{
+  &container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.47);
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &box_back{
+    width: 60%;
+    height: 20rem;
+   
+    border-radius: 1rem;
+    background-image: url('../../assets/img/mirada.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &box{
+
+
+    width: 100%;
+    height: 100%;
+   
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.818) ;
+   
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+
+    h4{
+      color: white;
+    }
+    &_close-icon{
+      position:absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
+  }
+
+  &btn{
+    width: 6rem;
+    padding: 10px;
+
+  }
+ 
+
+
+  &cont_btn{
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+.btn_confirm{
+  background-color: green
+}
+
+.btn_cancel{
+  background-color: red;
+}

@@ -10,31 +10,52 @@ import { Spinner } from "../../commons/otros/Spinner";
 //components
 import { CourseResume } from "./CourseResume";
 import { CourseModules } from "./CourseModules";
+import ModalConfirmDelete from "../../commons/ModalConfirmDelete";
 
 export const ProvideCourse = () => {
-  const [course, setCourse] = useState(null);
+  const [courses, setCourses] = useState(null);
+  const [reload, setReload] = useState(false);
+  const [modalState, setModalState] = useState({ module: null, state: false });
+
   const { id } = useParams();
 
   useEffect(() => {
     findCourseById(id)
       .then((res) => {
-        setCourse(res);
+        setCourses(res);
       })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, [id, reload]);
 
-  console.log(course);
+  const handleModuleAdded = () => {
+    setReload((prev) => !prev);
+  };
+
+  const handleDeleteModule = () => {
+    console.log("click", module);
+  };
 
   return (
     <section className="provideCourse">
-      {!course ? (
+      {!courses ? (
         <span className="provideCourse__spinner">
           <Spinner />
         </span>
       ) : (
         <>
-          <CourseResume course={course} />
-          <CourseModules course={course}/>
+          {modalState.state && (
+            <ModalConfirmDelete
+              handleDelete={handleDeleteModule}
+              handleCancel={() => setModalState(prev => ({...prev, state: false}))}
+            />
+          )}
+          <CourseResume course={courses} />
+          <CourseModules
+            handleModuleAdded={handleModuleAdded}
+            courses={courses}
+            idDoc={id}
+            handleDeleteModule={setModalState}
+          />
         </>
       )}
     </section>
