@@ -8,122 +8,94 @@ import { CloseIcon } from "../../commons/icons/CloseIcon";
 import { ChevronDown } from "../../commons/icons/ChevronDown";
 import { TrashIcon } from "../../commons/icons/TrashIcon";
 import { PenEditIcon } from "../../commons/icons/PenEditIcon";
-import { PlusIcon } from '../../commons/icons/PlusIcon'
+import { PlusIcon } from "../../commons/icons/PlusIcon";
 //motion
 import { motion } from "framer-motion";
 
-
-export const CourseModules = ({ courses, idDoc, handleModuleAdded , handleDeleteModule }) => {
-
-
-
+export const CourseModules = ({
+  courses,
+  idDoc,
+  handleModuleAdded,
+  handleDeleteModule,
+}) => {
   return (
     <section className="courseModules">
       <h3>Módulos</h3>
 
       {courses.modules?.length ? (
         courses.modules.map((module) => (
-          <CourseModule handleDeleteModule={handleDeleteModule}  key={module.id} module={module} />
+          <CourseModule
+            handleDeleteModule={handleDeleteModule}
+            key={module.id}
+            module={module}
+          />
         ))
       ) : (
         <p>Parece que todavía no has añadido a ningun módulo</p>
       )}
-      <AddNewModule  handleModuleAdded={handleModuleAdded} idDoc={idDoc} />
+      <AddNewModule handleModuleAdded={handleModuleAdded} idDoc={idDoc} />
     </section>
   );
 };
 
-const CourseModule = ({ module , handleDeleteModule }) => {
- 
+const CourseModule = ({ module, handleDeleteModule }) => {
   const [iconsCursorPointer, setIconsCursorPointer] = useState({
     chevronDown: false,
     penEdit: false,
     trash: false,
   });
 
-  const [showVideos, setShowVideos] = useState(false) 
-
-
+  const [showVideos, setShowVideos] = useState(false);
 
   const handleManageStateIcon = (state, name) => {
     setIconsCursorPointer((prev) => ({ ...prev, [name]: state }));
   };
 
-
-
-
   return (
-    <section 
-    className="coursemodule__container"
-    >
-    <div className="coursemodule__module">
-      <motion.span
-        onMouseEnter={() => handleManageStateIcon(true, "chevronDown")}
-        onMouseLeave={() => handleManageStateIcon(false, "chevronDown")}
-        className="coursemodule__container_icon"
-      >
-        <div
-        
-        onClick={()=>setShowVideos(prev => !prev)}
+    <section className="coursemodule__container">
+      <div className="coursemodule__module">
+        <motion.span
+          onMouseEnter={() => handleManageStateIcon(true, "chevronDown")}
+          onMouseLeave={() => handleManageStateIcon(false, "chevronDown")}
+          className="coursemodule__container_icon"
         >
-        
-          <ChevronDown
-            fill={iconsCursorPointer.chevronDown ? "#f2f2f2" : "#afafaf"}
-          />
-        </div>
-      </motion.span>
-      <h3>{module.title}</h3>
-      <span className="coursemodule__container_icons">
-        <div
-          onMouseEnter={() => handleManageStateIcon(true, "penEdit")}
-          onMouseLeave={() => handleManageStateIcon(false, "penEdit")}
-       
-        >
-          <PenEditIcon
-            fill={iconsCursorPointer.penEdit ? "#f2f2f2" : "#afafaf"}
-          />
-        </div>
+          <div onClick={() => setShowVideos((prev) => !prev)}>
+            <ChevronDown
+              fill={iconsCursorPointer.chevronDown ? "#f2f2f2" : "#afafaf"}
+            />
+          </div>
+        </motion.span>
+        <h3>{module.title}</h3>
+        <span className="coursemodule__container_icons">
+          <div
+            onMouseEnter={() => handleManageStateIcon(true, "penEdit")}
+            onMouseLeave={() => handleManageStateIcon(false, "penEdit")}
+          >
+            <PenEditIcon
+              fill={iconsCursorPointer.penEdit ? "#f2f2f2" : "#afafaf"}
+            />
+          </div>
 
-        <div
-          onMouseEnter={() => handleManageStateIcon(true, "trash")}
-          onMouseLeave={() => handleManageStateIcon(false, "trash")}
-          onClick={()=>handleDeleteModule({module: module , state: true})}
-        >
-          <TrashIcon
-            fill={iconsCursorPointer.trash ? "#f2f2f2" : "#afafaf"}
-          />
-        </div>
-      </span>
-    </div>
+          <div
+            onMouseEnter={() => handleManageStateIcon(true, "trash")}
+            onMouseLeave={() => handleManageStateIcon(false, "trash")}
+            onClick={() => handleDeleteModule({ module: module, state: true })}
+          >
+            <TrashIcon
+              fill={iconsCursorPointer.trash ? "#f2f2f2" : "#afafaf"}
+            />
+          </div>
+        </span>
+      </div>
 
-
-    <div className="coursemodule__videos">
-
-     <li className="coursemodule__videos_add">
-    
-     <PlusIcon />
-      Añadir video
-     </li>
-
-    </div>
-
-
+      <div className="coursemodule__videos">
+        <li className="coursemodule__videos_add">
+          <PlusIcon />
+          Añadir video
+        </li>
+      </div>
     </section>
-
-   
   );
-};
-
-
-
-
-
-
-
-
-
-const CourseModuleItems = () => {
-  return <li></li>;
 };
 
 const AddNewModule = ({ idDoc, handleModuleAdded }) => {
@@ -183,6 +155,3 @@ const AddNewModule = ({ idDoc, handleModuleAdded }) => {
     </div>
   );
 };
-
-//Module schema
-//Title , description, videos = [{title, description, attachedContent, url}]

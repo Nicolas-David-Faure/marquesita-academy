@@ -11,6 +11,7 @@ import { Spinner } from "../../commons/otros/Spinner";
 import { CourseResume } from "./CourseResume";
 import { CourseModules } from "./CourseModules";
 import ModalConfirmDelete from "../../commons/ModalConfirmDelete";
+import { deleteModule } from "../../config/services/courses/deleteModule";
 
 export const ProvideCourse = () => {
   const [courses, setCourses] = useState(null);
@@ -31,8 +32,16 @@ export const ProvideCourse = () => {
     setReload((prev) => !prev);
   };
 
-  const handleDeleteModule = () => {
-    console.log("click", module);
+  const handleDeleteModule = async () => {
+      await deleteModule({ courseID: id, moduleID: modalState.module.id });
+      handleModuleAdded()
+      setModalState({ module: null , state: false });
+    return;
+  };
+
+  const handleCancelModalConfirm = () => {
+    setModalState({ module: null , state: false });
+    return;
   };
 
   return (
@@ -46,7 +55,7 @@ export const ProvideCourse = () => {
           {modalState.state && (
             <ModalConfirmDelete
               handleDelete={handleDeleteModule}
-              handleCancel={() => setModalState(prev => ({...prev, state: false}))}
+              handleCancel={handleCancelModalConfirm}
             />
           )}
           <CourseResume course={courses} />
