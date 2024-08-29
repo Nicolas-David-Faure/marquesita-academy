@@ -1,5 +1,5 @@
 import React from 'react'
-import './banner.scss'
+import './sass/banner.scss'
 import logoMarquesita from '../assets/img/marquesita_academy_logo.png';
 export const Banner = () => {
   return (

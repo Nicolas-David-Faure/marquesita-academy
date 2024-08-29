@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const addNewModule = async ({id , moduleInfo}) => {
   try {
     const courseRef = doc(db, 'courses', id);
-
+    
 
     console.log(courseRef)
     console.log(moduleInfo)

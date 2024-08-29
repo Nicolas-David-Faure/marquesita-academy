@@ -12,18 +12,19 @@ import { CourseResume } from "./CourseResume";
 import { CourseModules } from "./CourseModules";
 import ModalConfirmDelete from "../../commons/ModalConfirmDelete";
 import { deleteModule } from "../../config/services/courses/deleteModule";
-
+//Redux
+import { useSelector } from "react-redux";
 export const ProvideCourse = () => {
-  const [courses, setCourses] = useState(null);
+  const [course, setCourse] = useState(null);
   const [reload, setReload] = useState(false);
   const [modalState, setModalState] = useState({ module: null, state: false });
-
+  const {language} = useSelector(state => state.languageSlice)
   const { id } = useParams();
 
   useEffect(() => {
     findCourseById(id)
       .then((res) => {
-        setCourses(res);
+        setCourse(res);
       })
       .catch((err) => console.error(err));
   }, [id, reload]);
@@ -46,7 +47,7 @@ export const ProvideCourse = () => {
 
   return (
     <section className="provideCourse">
-      {!courses ? (
+      {!course ? (
         <span className="provideCourse__spinner">
           <Spinner />
         </span>
@@ -58,10 +59,11 @@ export const ProvideCourse = () => {
               handleCancel={handleCancelModalConfirm}
             />
           )}
-          <CourseResume course={courses} />
+          <CourseResume course={course} />
           <CourseModules
+            language={language}
             handleModuleAdded={handleModuleAdded}
-            courses={courses}
+            course={course}
             idDoc={id}
             handleDeleteModule={setModalState}
           />

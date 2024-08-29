@@ -21,12 +21,15 @@ import { useAuthStateListener } from "./hooks/useAuthStateListener";
 import { getCourses } from "./config/services/courses/getCourses";
 import { setCourses } from "./store/slice/courses/coursesSlice";
 import { dateToString } from "./utils/dateToString";
+import { UploadVideoNotification } from "./commons/UploadVideoNotification";
 
 
 export function App() {
   const language = useSelector((state) => state.languageSlice.language);
   const user = useSelector((state) => state.authSlice.user);
   const courses = useSelector((state) => state.coursesSlice);
+
+
 
 
   const dispatch = useDispatch();
@@ -47,8 +50,13 @@ export function App() {
     fetchCourses();
 
   }, [dispatch , courses.courseAdded]);
+
+
+
   return (
     <main onClick={() => dispatch(toggleAuthModal(false))} className="app__container">
+     {courses.video.videoUploadingPercentage > 0 &&  <UploadVideoNotification/>}
+  
       <Header language={language} />
       <Routes>
         <Route path="/*" element={<Home language={language} />} />

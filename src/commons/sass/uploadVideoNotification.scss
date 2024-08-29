@@ -1,0 +1,94 @@
+
+.uploadVideoNotification {
+  position: fixed;
+  width: 15rem;
+  height: 5rem;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(52, 52, 52, 0.741);
+  box-shadow: 2px 3px 3px black;
+
+  animation-duration: 1.5s;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  p {
+    text-align: center;
+    color: rgb(255, 255, 255);
+  }
+  &__loading {
+    width: 90%;
+    height: 1rem;
+    border: 1px solid rgb(112, 105, 11);
+    border-radius: 1rem;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      text-align: center;
+      color: goldenrod;
+      z-index: 101;
+    }
+    div {
+      height: 100%;
+      background-color: white;
+      border-radius: 1rem;
+      position: absolute;
+      transition: ease all 1s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
+}
+
+.enterAnimate {
+  animation-name: enterAnimate;
+}
+.exitAnimate{
+  animation-name: exitAnimate;
+}
+
+
+
+
+@keyframes enterAnimate {
+  0% {
+    right: -100%;
+  }
+  60% {
+    right: 1.5rem;
+  }
+  100% {
+    right: 1rem;
+  }
+}
+
+@keyframes exitAnimate {
+  0% {
+    right: 1rem;
+  }
+  40% {
+    right: 1.5rem;
+  }
+
+  100% {
+    right: -100%;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 //styles
 import "./scss/courseModules.scss";
 //services
@@ -11,24 +11,30 @@ import { PenEditIcon } from "../../commons/icons/PenEditIcon";
 import { PlusIcon } from "../../commons/icons/PlusIcon";
 //motion
 import { motion } from "framer-motion";
+import { handleUploadVideo } from "../../config/services/admin/handleUploadVideo";
+import { useDispatch } from "react-redux";
 
 export const CourseModules = ({
-  courses,
+  course,
   idDoc,
   handleModuleAdded,
   handleDeleteModule,
+  language,
 }) => {
   return (
     <section className="courseModules">
       <h3>Módulos</h3>
 
-      {courses.modules?.length ? (
-        courses.modules.map((module) => (
+      {course.modules?.length ? (
+        course.modules.map((module) => (
           <CourseModule
             handleDeleteModule={handleDeleteModule}
             key={module.id}
             module={module}
-          />
+            language={language}
+            course={{ ...course,idDoc}}
+            handleModuleAdded={handleModuleAdded}
+          /> 
         ))
       ) : (
         <p>Parece que todavía no has añadido a ningun módulo</p>
@@ -38,7 +44,7 @@ export const CourseModules = ({
   );
 };
 
-const CourseModule = ({ module, handleDeleteModule }) => {
+const CourseModule = ({ module, handleDeleteModule, language, course , handleModuleAdded }) => {
   const [iconsCursorPointer, setIconsCursorPointer] = useState({
     chevronDown: false,
     penEdit: false,
@@ -50,6 +56,8 @@ const CourseModule = ({ module, handleDeleteModule }) => {
   const handleManageStateIcon = (state, name) => {
     setIconsCursorPointer((prev) => ({ ...prev, [name]: state }));
   };
+
+
 
   return (
     <section className="coursemodule__container">
@@ -89,16 +97,21 @@ const CourseModule = ({ module, handleDeleteModule }) => {
       </div>
 
       <div className="coursemodule__videos">
-        <li className="coursemodule__videos_add">
-          <PlusIcon />
-          Añadir video
-        </li>
+        {
+          module?.videos.map((e, i) => {
+            return <li key={i}>
+             <p>{e.title}</p> 
+            </li>
+          })
+        }
+
+        <AddNewVideo handleModuleAdded={handleModuleAdded} module={module} language={language} course={course} />
       </div>
     </section>
   );
 };
 
-const AddNewModule = ({ idDoc, handleModuleAdded }) => {
+const AddNewModule = ({ idDoc, handleModuleAdded, course }) => {
   const initialState = {
     title: "",
     description: "",
@@ -153,5 +166,95 @@ const AddNewModule = ({ idDoc, handleModuleAdded }) => {
         {!moduleInfo.toggle ? "Añadir nuevo módulo" : "Cancelar"}
       </button>
     </div>
+  );
+};
+
+const AddNewVideo = ({ language, module, course , handleModuleAdded }) => {
+  const dispatch = useDispatch();
+
+  
+  const initialState = {
+    file: null,
+    name: null,
+    loading: false,
+    extension: null,
+  }
+  //!Video add
+  const inputAddVideoRef = useRef(null);
+  const [video, setVideo] = useState({
+    file: null,
+    name: null,
+    loading: false,
+    extension: null,
+  });
+
+  const handleChangeAddNewVideo = (e) => {
+    const file = e.target.files[0];
+    setVideo((prev) => ({ ...prev, file, extension: file.name.split(".")[1] }));
+  };
+
+  const buttonAdd = {
+    en: video.loading ? "Loading.." : "Add",
+    es: video.loading ? "Cargando.." : "Añadir",
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const courseName = course.title.replace(/ /g, "_").toLowerCase();
+    const moduleName = module.title.replace(/ /g, "_").toLowerCase();
+    const path = `courses/${courseName}/${moduleName}/${video.name}.${video.extension}`;
+    setVideo((prev) => ({ ...prev, loading: true }));
+    await handleUploadVideo({
+      courseID: course.idDoc,
+      moduleID: module.id,
+      file: video.file,
+      fileName: video.name + "." + video.extension,
+      path,
+      dispatch,
+    });
+    handleModuleAdded()
+    setVideo(initialState);
+  };
+
+  return (
+    <li className="coursemodule__videos_add">
+      {!video.file ? (
+        <button
+          className="coursemodule__videos_add_btn"
+          onClick={() => inputAddVideoRef.current.click()}
+        >
+          <PlusIcon />
+          <input
+            onChange={handleChangeAddNewVideo}
+            ref={inputAddVideoRef}
+            type="file"
+            name="video"
+            id="input_add_video"
+          />
+          Añadir video
+        </button>
+      ) : (
+        <form
+          onSubmit={handleSubmit}
+          className="coursemodule__videos_add_container"
+        >
+          <p>{video.file?.name}</p>
+          <input
+            disabled={video.loading}
+            onChange={(e) =>
+              setVideo((prev) => ({ ...prev, name: e.target.value }))
+            }
+            required
+            placeholder={language === "en" ? "Name video" : "Nombre del video"}
+            type="text"
+            name="name"
+            className={video.loading ? "loading__input" : ""}
+          />
+
+          <button className={video.loading ? "greyBtn" : ""} type="submit">
+            {buttonAdd[language]}
+          </button>
+        </form>
+      )}
+    </li>
   );
 };
