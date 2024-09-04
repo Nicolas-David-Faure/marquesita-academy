@@ -9,7 +9,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { Home } from "./comp/Home";
 import { Aboutme } from "./comp/Aboutme";
 import { Header } from "./comp/Header";
-import { Courses } from "./comp/Courses";
+import { Courses } from "./comp/courses/Courses";
 import { Profile } from "./comp/profile/Profile";
 import { ProvideCourse } from "./comp/provideCourse/ProvideCourse";
 
@@ -28,9 +28,6 @@ export function App() {
   const language = useSelector((state) => state.languageSlice.language);
   const user = useSelector((state) => state.authSlice.user);
   const courses = useSelector((state) => state.coursesSlice);
-
-
-
 
   const dispatch = useDispatch();
   useAuthStateListener()
@@ -59,9 +56,10 @@ export function App() {
   
       <Header language={language} />
       <Routes>
-        <Route path="/*" element={<Home language={language} />} />
+        <Route path="/courses" element={<Courses language={language} />} />
         <Route path="/profile/:uid" element={<Profile courses={courses.courses} language={language} user={user} />} />
         <Route path='/provide-course/:id' element={<ProvideCourse />} />
+        <Route path="/*" element={<Home language={language} />} />
       </Routes>
     
       

@@ -11,14 +11,9 @@ export const UploadVideoNotification = ({language }) => {
   const { video } = useSelector(store => store.coursesSlice)
   const progress = video.videoUploadingPercentage
 
-
-
   const handleClose =() => {
-
+    
   }
-
-
- 
   return (
     <span className={`uploadVideoNotification ${progress < 100 ?  'enterAnimate' : 'exitAnimate'}`}>
         <span className='uploadVideoNotification__close'>

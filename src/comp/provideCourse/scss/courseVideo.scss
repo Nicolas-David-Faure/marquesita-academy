@@ -1,0 +1,45 @@
+.coursemodule__videos_video{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 1rem ;
+  border-radius: 1rem;
+  min-height: 11rem;
+  padding: .5rem;
+  &:hover{
+      background-color: rgb(76, 76, 76);
+    }
+
+
+    figcaption{
+      padding: 1rem;
+    }
+
+    &_resume{ 
+      
+      height: 100%;
+      flex: 1;
+      margin-top: 1rem;
+
+      header{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        p{
+         margin: 1rem 0;
+        }
+        h3{
+          text-align: start;
+          padding: 0 2rem;
+          text-transform: uppercase;
+        }
+      }
+      p{
+        text-align: start;
+        margin-top: 2rem;
+        padding: 0 2rem;
+      }
+    }
+
+}

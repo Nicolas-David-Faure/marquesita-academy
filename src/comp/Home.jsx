@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/home.scss";
 import { Banner } from "../commons/Banner";
 import { Aboutme } from "./Aboutme";
-import { Courses } from "./Courses";
+import { Courses } from "./courses/Courses";
 export const Home = ({ language }) => {
   return (
     <>
@@ -22,8 +22,8 @@ export const Home = ({ language }) => {
   </div>*/}
       </div>
 
-      <Aboutme language={language} />
-      <Courses language={language} />
+      {/* <Aboutme language={language} /> */}
+      {/* <Courses language={language} /> */}
     </>
   );
 };

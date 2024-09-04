@@ -1,0 +1,130 @@
+
+.coursemodule__ {
+  &container {
+    width: 90%;
+    min-height: 3rem;
+    position: relative;
+    background-color: rgb(54, 54, 54);
+    border-radius: 1rem;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.497);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+    &_icon ,   &_icons {
+      position: absolute;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      
+    }
+    &_icon {
+      left: 5px;
+    }
+    &_icons {
+      right: 5px;
+    }
+    h3,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+
+  &module{
+    width: 100%;
+    min-height: 3rem;
+    position: relative;
+    background-color: rgb(54, 54, 54);
+    border-radius: 1rem;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.497);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  &videos{
+    width: 100%;
+    min-height: 3rem;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(54, 54, 54);
+    border-radius: 1rem;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.497);
+    
+    li{
+      list-style: none;
+    }
+
+    &_add{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem 0;
+      border-radius: 1rem;
+        // &:hover{
+        //   background-color: rgb(76, 76, 76);
+        // }
+
+        &_btn{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          outline: none;
+          &:focus{
+            outline: none;
+          }
+        }
+        &_container{
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          p{
+            padding: 1rem;
+          }
+
+          
+          input{
+            max-width: 30rem;
+            min-width: 20rem;
+            padding: 1rem;
+            outline: none;
+            border-radius: 1rem;
+            font-size: 1rem;
+
+            border: none;
+            text-align: center;
+            box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.852);
+            &:hover{
+              background-color: #2e2b2bb0;
+            }
+            &:focus{
+              background-color: #2e2b2bb0 ;
+            }
+            &::placeholder{
+              text-align: center;
+            }
+
+            
+          }
+          .loading__input {
+            &:hover{
+              background-color: transparent;
+            }
+          }
+
+          button{
+            margin-top: 1rem;
+          }
+        }
+    }
+  }
+}
