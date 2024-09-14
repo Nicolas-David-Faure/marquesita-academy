@@ -5,20 +5,31 @@
         flex-direction: column;
         
       
-        height: 100vh;
+        min-height: 100vh;
         width: 100%;
     
-
+        background-color: black;
        
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
 
+        &_title{
+            font-size: 1.5rem;
+        }
     }
 
      &divisor{
         width: 100%; 
 
         border-bottom: 1px solid white;
+     }
+
+
+     &section-1{
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        padding-top: 1rem;
      }
 }

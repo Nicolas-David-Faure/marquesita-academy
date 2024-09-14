@@ -1,0 +1,40 @@
+.titleHome {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  padding: 2rem 0;
+  &-login {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    background-color: rgba(29, 34, 38, 0.429);
+    border: 1px solid rgba(218, 165, 32, 0.505);
+    display: grid;
+    place-content: center;
+    img {
+      border-radius: 100%;
+      width: 100%;
+      height: 100%;
+    }
+
+    strong {
+      color: white;
+      font-size: 1.5rem;
+    }
+  }
+
+  &-title {
+    font-size: 1rem;
+    strong {
+      color: goldenrod;
+    }
+  }
+
+
+  &-logout{
+    width: 100%;
+  }
+}
