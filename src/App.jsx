@@ -6,7 +6,7 @@ import { db, getPrueba, auth, searchUserById } from "./config/config";
 import { onAuthStateChanged } from "firebase/auth";
 
 //components
-import { Home } from "./comp/Home";
+import { Home } from "./comp/home/Home";
 import { Aboutme } from "./comp/Aboutme";
 import { Header } from "./comp/Header";
 import { Courses } from "./comp/courses/Courses";
