@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 //firebase
 import { db, getPrueba, auth, searchUserById } from "./config/config";
@@ -22,7 +22,7 @@ import { getCourses } from "./config/services/courses/getCourses";
 import { setCourses } from "./store/slice/courses/coursesSlice";
 import { dateToString } from "./utils/dateToString";
 import { UploadVideoNotification } from "./commons/UploadVideoNotification";
-
+import { setScreenWidth } from "./store/slice/screen/screenSlice";
 
 export function App() {
   const language = useSelector((state) => state.languageSlice.language);
@@ -47,6 +47,20 @@ export function App() {
     fetchCourses();
 
   }, [dispatch , courses.courseAdded]);
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      dispatch(setScreenWidth(window.innerWidth));
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [dispatch]);
+
 
 
 

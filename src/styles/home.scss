@@ -2,9 +2,9 @@
 
     &container{
         display: flex;
-        flex-direction: flex;
-        align-items: center;
-        justify-content: space-evenly;
+        flex-direction: column;
+        
+      
         height: 100vh;
         width: 100%;
     
@@ -16,39 +16,9 @@
 
     }
 
-    &promotion{
-        
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        color: #e6e6e6;
-        font-size: 1.4rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-        text-align: start;
+     &divisor{
+        width: 100%; 
 
-        
-    }
-
-
-    &title{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        color: #e6e6e6;
-        font-size: 1.4rem;
-
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-
-        h1{
-            text-transform: capitalize;
-            margin: 0;
-        }
-    }
-
-     
+        border-bottom: 1px solid white;
+     }
 }

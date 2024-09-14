@@ -1,40 +1,64 @@
-.navMarquesita__{
-  &container{
+.navMarquesita__ {
+  &container {
     display: flex;
     height: 4rem;
-    
-   
     justify-content: space-between;
   
   }
 
-  &list{
+  &list {
     display: flex;
     padding: 0;
     margin: 0;
-    
     gap: 1rem;
   }
 
-
-
-  &item{
+  &item {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-   
-    
+
     color: #e6e6e6;
     font-weight: 300;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
+
+    &_icon {
+      width: 2rem;
+    }
+
+    @media (min-width: 550px) {
+      .navMarquesita__item_icon {
+        display: none;
+      }
+    }
+    @media (max-width: 550px) {
+      p {
+        display: none;
+      }
+    }
   }
+}
 
+@media (max-width: 550px) {
+  .navMarquesita__ {
+    &container {
+      width: 100%;
+      justify-content: center;
+    }
 
+    &list {
+      width: 100%;
+      justify-content: space-around;
+    }
 
+    // &item {
+     
+    // }
+  }
 }

@@ -7,6 +7,9 @@ export const CourseItem = ({id,imgURL , price , discount , active}) => {
     <li
       className='courseItem'
     >
+      <figcaption>
+        <img src={imgURL} alt="" />
+      </figcaption>
        
 
     </li>
