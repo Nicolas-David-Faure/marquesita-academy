@@ -15,7 +15,7 @@ export const TitleHome = ({ user, language }) => {
     const displayNameSplit = user?.displayName?.split(" ");
 
     const initialsLettersUser = displayNameSplit[0][0] + displayNameSplit[1][0];
-    console.log(initialsLettersUser);
+   
     setDataUser((prev) => ({ ...prev, initialsLettersUser }));
   }, [user]);
 
