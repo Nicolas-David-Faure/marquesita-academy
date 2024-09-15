@@ -35,14 +35,8 @@ export const TitleHome = ({ user, language }) => {
           </h3>
         </>
       ) : (
-        <div className="titleHome-logout">
-
-        <h3 className="titleHome-title">
-            {
-              language === "en"  ? 'Welcome to marquesita academy ' : 'Bienvenid@ a marquesita academy'
-            } 💃
-          </h3>
-        </div>
+        <>
+        </>
       )}
     </div>
   );

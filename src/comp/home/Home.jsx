@@ -1,13 +1,19 @@
 import React from "react";
+//style
 import "./scss/home.scss";
-import { Banner } from "../../commons/Banner";
-import { Aboutme } from "../Aboutme";
-import { Courses } from "../courses/Courses";
-import { Slider } from "../../commons/Slider";
-
-import { arraySlogans } from "../../mooks/home";
+//redux
 import { useSelector } from "react-redux";
+//commons
+import { Banner } from "../../commons/Banner";
+import { Slider } from "../../commons/Slider";
+//components
 import { TitleHome } from "./TitleHome";
+//mooks
+import { sliderQuotes } from "../../mooks/home";
+import { Footer } from "../footer/Footer";
+
+
+
 
 export const Home = ({ language, userLogin }) => {
   const { user } = useSelector((store) => store.authSlice);
@@ -17,14 +23,28 @@ export const Home = ({ language, userLogin }) => {
   return (
     <>
       <div className="home__container">
-        <TitleHome user={user} language={language} />
+        {
+          user && <TitleHome user={user} language={language} />
+        }
+       
 
         <Banner />
-        <div className="home__divisor"></div>
+       
         <section className="home__section-1">
-          <Slider content={arraySlogans} format="text" />
+
+          <div className="home__section_part-1">
+            <h4>Cursos certificados de lash training</h4>
+            <button>
+              Ver cursos
+            </button>
+          </div>
+
+          <Slider content={sliderQuotes} format="text" />
+
         </section>
         {/* <!-- Slider main container --> */}
+
+        <Footer />
       </div>
     </>
   );

@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 
 
 export const Slider = ({
-  content = [mirada, mirada, mirada, mirada],
+  content ,
   format = "img",
 }) => {
   const { screenWidth } = useSelector((store) => store.screenSlice);
@@ -34,7 +34,7 @@ export const Slider = ({
         modules={[Pagination]}
         className="mySwiper swiper"
       >
-        {content.map((item, i) => {
+        {content?.map((item, i) => {
 
 
         const formatShow = {
@@ -42,8 +42,9 @@ export const Slider = ({
           text: <h2 className="slider-text">{item}</h2>,
         };
           return (
-            <SwiperSlide className="swiper-slide">
-              {formatShow[format]}
+            <SwiperSlide key={i} className="swiper-slide">
+              <img src={item.img}  />
+              <p className="slider-text">{item.text}</p>
             </SwiperSlide>
           );
         })}

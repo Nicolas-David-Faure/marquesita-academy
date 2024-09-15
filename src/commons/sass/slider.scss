@@ -1,7 +1,8 @@
 .swiper {
   width: 100%;
   height: 100%;
-  background-color: rgba(142, 142, 142, 0.264);
+  background: rgb(61,61,61);
+  background: linear-gradient(0deg, rgba(61,61,61,1) 0%, rgba(0,0,0,1) 100%);
 }
 
 .swiper-slide {
@@ -12,9 +13,10 @@
   /* Center slide text vertically */
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-
-
+  position: relative;
+  max-height: 300px;
 }
 
 .swiper-slide img {
@@ -22,14 +24,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(50%);
 }
 
 
 .slider-text{
- 
-  font-family: "Playwrite CU", cursive;
+  
+  
   font-optical-sizing: auto;
   color: goldenrod;
   font-style: normal;
-  
+  position: absolute;
+  bottom: 0%;
 }
+

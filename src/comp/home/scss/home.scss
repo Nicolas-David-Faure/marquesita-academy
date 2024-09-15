@@ -3,7 +3,7 @@
     &container{
         display: flex;
         flex-direction: column;
-        
+        max-width: 1224px;
       
         min-height: 100vh;
         width: 100%;
@@ -13,23 +13,36 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        margin: 0 auto;
 
         &_title{
             font-size: 1.5rem;
         }
     }
 
-     &divisor{
-        width: 100%; 
-
-        border-bottom: 1px solid white;
-     }
-
+    
 
      &section-1{
-        width: 90%;
+        width: 100%;
         height: 100%;
         margin: 0 auto;
         padding-top: 1rem;
      }
+}
+
+.home__section_part-1{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    
+    margin: 1rem 0 5rem 0;
+    font-family: 'Times New Roman', Times, serif;
+    h4{
+        font-size: 2rem;
+    }
+    button{
+        background-color: goldenrod;
+        border-radius: 0;
+    }
 }
