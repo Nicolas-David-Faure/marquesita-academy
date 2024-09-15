@@ -1,0 +1,16 @@
+.authBtn{
+  color: goldenrod;
+  background-color: transparent;
+  border: 1px dashed goldenrod ;
+  border-radius: 2px;
+ 
+  outline: none;
+  &:hover{
+    border-color:rgb(108, 85, 24) ;
+  }
+
+  &:focus{
+    outline: none;
+  }
+  
+}

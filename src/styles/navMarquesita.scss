@@ -32,12 +32,12 @@
       width: 2rem;
     }
 
-    @media (min-width: 550px) {
+    @media (min-width: 768px) {
       .navMarquesita__item_icon {
         display: none;
       }
     }
-    @media (max-width: 550px) {
+    @media (max-width: 768px) {
       p {
         display: none;
       }
@@ -45,7 +45,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   .navMarquesita__ {
     &container {
       width: 100%;

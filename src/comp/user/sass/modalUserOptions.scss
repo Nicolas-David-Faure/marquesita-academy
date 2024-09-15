@@ -1,27 +1,38 @@
 @import "../../../assets/sass/mixins.scss";
 .modalUserOptions__main {
+  //flexbox
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 110%;
-  left: -8rem;
+  flex-direction: column;
+  //position
+  top: 5rem;
+
+  right: 0%; /* para centrarlo horizontalmente desde la mitad del padre */
+  transform: translateX(-50%); 
+
+  //sizes
   width: 20rem;
   height: 30rem;
-  background-color: rgb(110, 129, 12);
-  flex-direction: column;
+
+  //box-decoration
+  border: 1px dashed goldenrod;
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
   z-index: 100;
   user-select: none;
-  background-image: url("/src/assets/img/user_modal/1.jpg");
+  
+  //bg
+  background-color: rgb(110, 129, 12);
+  background-image: url("/src/assets/owner_photos/10.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
+  //shadow
   box-shadow: 200px 40px 400px 0px rgba(0,0,0,0.86) inset;
--webkit-box-shadow: 200px 40px 400px 0px rgba(0,0,0,0.86) inset;
--moz-box-shadow: 200px 40px 400px 0px rgba(0,0,0,0.86) inset;
+  -webkit-box-shadow: 200px 40px 400px 0px rgba(0,0,0,0.86) inset;
+  -moz-box-shadow: 200px 40px 400px 0px rgba(0,0,0,0.86) inset;
   &-icon-default {
     width: 2rem;
     height: 2rem;
@@ -79,7 +90,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   .modalUserOptions__main {
     display: flex;
     justify-content: center;
@@ -92,7 +103,7 @@
 
     background-color: rgb(27, 27, 27);
     flex-direction: column;
-    border-left: 1px solid rgba(110, 129, 12, 0.364);
+    border-left: 1px dashed goldenrod;
 
     border-radius: 0px;
 

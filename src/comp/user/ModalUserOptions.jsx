@@ -72,7 +72,7 @@ export const ModalUserOptions = ({ language }) => {
       animate={animation.enter}
       className={`modalUserOptions__main`}
     >
-      <h4>Hola  <strong>Natalia{/*user.displayName.split(' ')[0]*/}!</strong></h4>
+      <h4>Hola  <strong>{user.displayName.split(' ')[0]}!</strong></h4>
       <ul>
         {itemsLinks.map(({ title, path, icon }) => (
           <Item
@@ -107,7 +107,7 @@ const Item = ({ title, path, icon : Icon, language, handleNavigate }) => {
 };
 
 const SelectAnimation = (screenWidth) => {
-  const isSmallScreen = screenWidth > 550;
+  const isSmallScreen = screenWidth > 768;
 
   const animationSmallScreen = {
     enter: {
@@ -121,7 +121,7 @@ const SelectAnimation = (screenWidth) => {
   return {
     enter: isSmallScreen ? { y: 0 } : animationSmallScreen.enter,
     enterInitial: isSmallScreen
-      ? { y: 100 }
+      ? { y: -100 }
       : animationSmallScreen.enterInitial,
   };
 };

@@ -1,6 +1,6 @@
 import photo_1 from '../assets/owner_photos/1-s.jpg'
 import photo_2 from '../assets/owner_photos/2-s.jpg'
-import photo_3 from '../assets/owner_photos/3-s.jpg'
+import photo_3 from '../assets/owner_photos/9-s.jpg'
 
 
 export const arraySlogans = [

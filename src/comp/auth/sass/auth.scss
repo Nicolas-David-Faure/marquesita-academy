@@ -1,7 +1,7 @@
 .auth__container{
 
     width: fit-content;
-    height: 100%;
+   
 
     display: flex;
     gap: 1rem;
@@ -9,7 +9,9 @@
 
  
 
-    position: relative;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 
