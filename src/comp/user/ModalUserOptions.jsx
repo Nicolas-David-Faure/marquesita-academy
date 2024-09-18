@@ -14,6 +14,9 @@ import { GiEyelashes } from "react-icons/gi";
 import { FaBookReader } from "react-icons/fa";
 import { VscSettings } from "react-icons/vsc";
 import { CiLogout } from "react-icons/ci";
+
+import { v4 as uuidv4 } from 'uuid';
+
 export const ModalUserOptions = ({ language }) => {
   const { user } = useSelector((state) => state.authSlice);
   const { screenWidth } = useSelector((state) => state.screenSlice);
@@ -72,11 +75,11 @@ export const ModalUserOptions = ({ language }) => {
       animate={animation.enter}
       className={`modalUserOptions__main`}
     >
-      <h4>Hola  <strong>{user.displayName.split(' ')[0]}!</strong></h4>
+      <h4>Hola  <strong>{user.displayName?.split(' ')[0]}!</strong></h4>
       <ul>
         {itemsLinks.map(({ title, path, icon }) => (
           <Item
-            key={title}
+            key={uuidv4()}
             handleNavigate={handleNavigate}
             language={language}
             title={title}

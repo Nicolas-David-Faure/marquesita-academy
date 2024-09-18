@@ -8,15 +8,18 @@ export const Courses = () => {
   return (
     <section className="courses__container">
       <ul className="courses__list">
-        {courses.map(({ id, imgURL, price, discount, active }, index) => {
+        {courses.map(({ id, imgURL, price, discount, active  , description, title}, index) => {
           return (
             <CourseItem
               key={id}  
               imgURL={imgURL}
               price={price}
+              description={description}
               discount={discount}
               active={active}
               id={id}
+              title={title}
+              
             />
           );
         })}
@@ -24,7 +27,7 @@ export const Courses = () => {
     </section>
   );
 };
-
+//Course info
 // {
 //   id: 'onKpm3aty1gBf5Cbv9AE',
 //   imgURL:

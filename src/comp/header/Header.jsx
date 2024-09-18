@@ -22,7 +22,6 @@ export const Header = ({ language }) => {
   const authState = useSelector((store) => store.authSlice);
   const dispatch = useDispatch();
 
-  console.log(authState);
   return (
     <div className="header__container">
       <img

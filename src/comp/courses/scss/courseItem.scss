@@ -1,15 +1,76 @@
 .courseItem{
-  width: 15rem;
+  width: 100%;
   height: 20rem;
-  border: 1px solid white;
+  display: flex;
   list-style: none;
-
+  outline: 1px dashed goldenrod;
+  padding: 1rem 0;
   figcaption{
-    width: 100%;
-    height: 60%;
+    width: 40rem;
+    height: 20rem;
+
+  margin-left: 1rem;
+  
     img{
       width: 100%;
       height: 100%;
+      image-rendering: optimizeSpeed;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
     }
   }
+
+
+  &-content{
+    width: 85%;
+    height: 100%;
+    margin:0 1rem;
+
+    outline: 1px dashed rgb(218, 79, 32);
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .courseItem{
+    width: 100%;
+    height: 30rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+
+    figcaption{
+      width: 85%;
+      height: 40%;
+      
+    
+    
+      img{
+        width: 100%;
+        height: 100%;
+        image-rendering: optimizeSpeed;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+   
+      }
+    }
+
+
+    &-content{
+      width: 85%;
+      height: 30rem;
+      // border: 1px solid goldenrod;
+      background-color: #f2f2f2;
+    }
+  }
+
+
+  
 }
