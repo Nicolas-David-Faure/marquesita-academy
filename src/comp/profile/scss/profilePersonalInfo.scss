@@ -44,18 +44,18 @@
     
       &_edit {
         position: absolute;
-        background-color: #f2f2f267;
+        background-color: rgba(255, 255, 255, 0.341);
         display: grid;
         place-items: center;
-        border-radius: 5px;
+        border-radius: 0 0 5px 5px;
        
-        top: 5px;
-        right: 5px;
+        bottom: 0;
+        width: 100%;
         cursor: pointer;
         
         transition: ease 0.3s background-color;
        &:hover{
-         background-color: #ffffff29;
+         background-color: #5b5b5b29;
 
        }
       }

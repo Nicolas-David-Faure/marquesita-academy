@@ -68,7 +68,7 @@ export const ProfilePersonalInfo = ({ language, user }) => {
           {isUserAuth && (
             <div onClick={() => document.getElementById("fileInput").click()} className="profilePersonalInfo__basicInfo_photo_edit">
               <input type="file" accept="image/*" onChange={handleImageChange} style={{ display: "none" }} id="fileInput" />
-              <CameraIcon width="2rem" height="2rem" fill="#a0a0a0" />
+              <CameraIcon width="2rem" height="2rem" fill="#000000" />
             </div>
           )}
 
