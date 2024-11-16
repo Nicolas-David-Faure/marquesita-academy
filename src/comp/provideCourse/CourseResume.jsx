@@ -8,7 +8,7 @@ export const CourseResume = ({ course }) => {
     <div className="provideCourse__courseResume">
       <h3>{course.title}</h3>
 
-      <div className="provideCourse__courseResume_content">
+      <div className="provideCourse__courseResume_content scroll_bar">
         <CourseResumeImg course={course} />
 
         <CourseDescription course={course} />

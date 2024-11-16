@@ -83,3 +83,43 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+/* Estilo general para scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Ancho del scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #000; /* Fondo negro para el track */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.8); /* Dorado opaco */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 3px solid #000; /* Espaciado negro alrededor del thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 1); /* Dorado más brillante al pasar el cursor */
+}
+
+/* Para navegadores que no usan WebKit */
+.scrollbar {
+  scrollbar-color: rgba(255, 215, 0, 0.8) #000; /* Dorado opaco y negro */
+  scrollbar-width: thin; /* Reduce el ancho del scrollbar */
+}
+
+
+video::-webkit-media-controls-enclosure {
+  display: flex;
+}
+
+video::-webkit-media-controls-panel {
+  display: flex;
+}
+
+video::-webkit-media-controls-download-button {
+  display: none;
+}

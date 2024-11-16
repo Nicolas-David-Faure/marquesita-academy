@@ -1,6 +1,7 @@
 .coursemodule__videos_video{
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
   margin: 1rem ;
   border-radius: 1rem;
@@ -13,6 +14,10 @@
 
     figcaption{
       padding: 1rem;
+      video {
+        width: 100%;
+        height: auto;
+      }
     }
 
     &_resume{ 

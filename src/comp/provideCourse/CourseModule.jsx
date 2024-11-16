@@ -29,6 +29,9 @@ export const CourseModule = ({
     setIconsCursorPointer((prev) => ({ ...prev, [name]: state }));
   };
 
+
+  console.log(module);
+
   return (
     <section className="coursemodule__container">
       <div className="coursemodule__module">
@@ -69,7 +72,7 @@ export const CourseModule = ({
       <div className="coursemodule__videos">
         {showVideos &&  module?.videos.map((e, i) => {
           return (
-            <CourseVideo key={ i+ e.title} title={e.title} urlImgVideo={urlImgVideo} index={i} />
+            <CourseVideo key={ i+ e.title} title={e.title} urlImgVideo={e.URLVideo} index={i} description={e.description} />
           );
         })}
 

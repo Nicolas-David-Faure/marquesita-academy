@@ -1,10 +1,13 @@
 import React from "react";
 import './scss/courseVideo.scss'
-export const CourseVideo = ({ urlImgVideo, title , index }) => {
+export const CourseVideo = ({ urlImgVideo, title , index , description }) => {
+  
+
+  console.log(urlImgVideo)
   return (
     <li className="coursemodule__videos_video">
       <figcaption>
-        <img src={urlImgVideo} alt="img" />
+        <video  src={urlImgVideo}  controls  donwload="video/mp4" alt="img" />
       </figcaption>
       <div className="coursemodule__videos_video_resume">
         <header>
@@ -12,10 +15,7 @@ export const CourseVideo = ({ urlImgVideo, title , index }) => {
           <p>#{index + 1}</p>
         </header>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam
-          accusamus similique, rerum provident, autem ab animi officia corrupti,
-          at voluptatem alias dolore culpa sed doloremque modi porro dolorem
-          illum fugiat!
+          {description}
         </p>
       </div>
     </li>
