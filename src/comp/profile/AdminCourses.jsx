@@ -9,6 +9,7 @@ import { CameraIcon } from "../../commons/icons/CameraIcon";
 import { addCourseToDb } from "../../config/services/admin/addCourseToDB";
 import { useDispatch } from "react-redux";
 import { toggleCourseAdded } from "../../store/slice/courses/coursesSlice";
+import { handleTruncateString } from "../../utils";
 
 const URLCourseExample = "https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image/66251efdcbc5.jpg"
 export const AdminCourses = ({ language, user  , courses = []}) => {
@@ -63,12 +64,15 @@ export const AdminCourses = ({ language, user  , courses = []}) => {
 
 const AdminCoursesCard = ({ course, language , handleRedirectToManageCourse }) => {
   console.log(course)
+
+  console.log(handleTruncateString(course.description , 100))
+
   return (
     <div className="adminCourses__container-grid-card" onClick={()=>handleRedirectToManageCourse(course.id)}>
       <div style={{ backgroundImage: `url(${course.imgURL})` }} className="adminCourses__container-grid-card-img"></div>
       <div className="adminCourses__container-grid-card-info">
         <h3>{course.title}</h3>
-        <p>{course.description}</p>
+        <p>{handleTruncateString(course.description , 100)}</p>
       </div>
     </div>
   );
