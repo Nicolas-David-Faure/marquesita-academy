@@ -23,7 +23,6 @@ export const ModalUserOptions = ({ language }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [animateEnter, setAnimateEnter] = useState(false);
 
   const handleSingOut = () => {
     signOut(auth)
