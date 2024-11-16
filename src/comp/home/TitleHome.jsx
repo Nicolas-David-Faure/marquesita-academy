@@ -11,10 +11,13 @@ export const TitleHome = ({ user, language }) => {
   // photoURL
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || !user.displayName) return;
+   
+    console.log(user);
     const displayNameSplit = user?.displayName?.split(" ");
-
+    console.log(displayNameSplit);
     const initialsLettersUser = displayNameSplit[0][0] + displayNameSplit[1][0];
+    // const initialsLettersUser = "ho"
    
     setDataUser((prev) => ({ ...prev, initialsLettersUser }));
   }, [user]);

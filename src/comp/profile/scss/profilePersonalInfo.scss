@@ -9,6 +9,13 @@
 
     flex-direction: column;
     border-radius: 5px;
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+        height: auto;
+       
+        width: 80%;
+    }
+    
   }
 
   &basicInfo {
@@ -17,6 +24,13 @@
 
 
     display: flex;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      height: auto;
+      justify-content: center;
+      align-items: center;
+    }
     &_photo {
       display: flex;
       flex-direction: column;
@@ -27,6 +41,7 @@
       height: 12rem; 
       border-radius: 5px;
       overflow: hidden;
+    
       &_edit {
         position: absolute;
         background-color: #f2f2f267;
@@ -49,6 +64,13 @@
         height: auto;
         border-radius: 5px;
         object-fit: contain;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: auto;
+        height: auto;
+
+        
       }
 
     }

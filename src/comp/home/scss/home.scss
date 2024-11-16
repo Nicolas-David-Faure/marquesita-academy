@@ -80,6 +80,10 @@
         background-color: transparent;
         right: 2rem;
         bottom: 2rem;
+
+        &:hover{
+            border: 1px dashed #6c5518;
+        }
     }
 
      //mediaquery
