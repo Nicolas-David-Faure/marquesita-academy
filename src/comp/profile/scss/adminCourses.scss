@@ -12,7 +12,7 @@
   
   
   @media screen and (max-width: 768px) {
-    width: 80%;
+    width: 95%;
     padding: 1rem;
     
   }
@@ -59,6 +59,7 @@
         cursor: pointer;
         transition: all 0.3s;
         position: relative;
+        
         &:hover{
           background-color: rgba(255, 255, 255, 0.2);
         }
@@ -108,45 +109,66 @@
 
 
 .adminCourses__modal{
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.134);
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  overflow: auto;
   &-container {
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     width: 70%;
     height: 90%;
     border-radius: 5px;
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(61,61,61,1) 100%);
+    background: rgb(0, 0, 0);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
     position: relative;
     padding: 2rem 0;
+
+    border: 1px dashed goldenrod;
+    box-sizing: border-box;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding: 1rem;
+      height: 100%;
+      
+    }
+
+    
 
     form {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding:  0 2rem;
+      
       height: 40rem;
-  
+      box-sizing: border-box;
+      gap: 1rem;
+      @media screen and (max-width: 768px) {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: auto;
+      
+      }
       .input_title_course{
-        width: 30rem;
+        width: 100%;
         height: 4rem;
         text-align: center;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: #f2f2f2;
         border: none;
         border-radius: 5px;
        
-        color: white;
+        color: black;
         font-size: 1.5rem;
         &:focus{
           outline: none;
@@ -154,28 +176,34 @@
       }
 
       textarea{
-        width: 28rem;
-        height: 5rem;
-        background-color: rgba(255, 255, 255, 0.1);
+        width: 100%;
+        height: 20rem;
+        background-color: #f2f2f2;
         border: none;
         border-radius: 5px;
-        color: white;
+        color: black;
         font-size: 1rem;
         padding: 1rem;
+        box-sizing: border-box;
         &:focus{
           outline: none;
         }
       }
 
       figure{
-        position: relative;
-        width: 30rem;
+        
+        display: flex;
+        width: 100%;
         height: 15rem;
+       
+        box-sizing: border-box;
+        flex-direction: column-reverse;
+
         .photo_edit{
-          position: absolute;
+         
           bottom: 0;
           right: 0;
-          width: 30rem;
+          width: 100%;
           height: 2rem;
 
 
@@ -193,7 +221,7 @@
           }
         }
         img{
-          width: 30rem;
+          width: auto;
           height: 100%;
           object-fit: fill;
           border-radius: 5px;

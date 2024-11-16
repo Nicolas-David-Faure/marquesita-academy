@@ -10,6 +10,7 @@ import { addCourseToDb } from "../../config/services/admin/addCourseToDB";
 import { useDispatch } from "react-redux";
 import { toggleCourseAdded } from "../../store/slice/courses/coursesSlice";
 import { handleTruncateString } from "../../utils";
+import { Spinner } from "../../commons/otros/Spinner";
 
 const URLCourseExample = "https://d3f1iyfxxz8i1e.cloudfront.net/courses/course_image/66251efdcbc5.jpg"
 export const AdminCourses = ({ language, user  , courses = []}) => {
@@ -80,6 +81,7 @@ const AdminCoursesCard = ({ course, language , handleRedirectToManageCourse }) =
 
 const AdminCoursesModalAddCourse = ({ language, handleToggleModalAddCourse }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [loading , setLoading] = useState(false);
   const [course, setCourse] = useState({
     title: "",
     description: "",
@@ -111,8 +113,11 @@ const AdminCoursesModalAddCourse = ({ language, handleToggleModalAddCourse }) =>
   const handleSubmit = async (e) => { 
 
     e.preventDefault();
+    setLoading(true);
     await addCourseToDb(course);
       dispatch(toggleCourseAdded());  
+      handleToggleModalAddCourse();
+      setLoading(false);
     }
 
 
@@ -120,28 +125,32 @@ const AdminCoursesModalAddCourse = ({ language, handleToggleModalAddCourse }) =>
   return (
     <div className="adminCourses__modal">
       <div className="adminCourses__modal-container">
-        <span className="adminCourses__modal-container-close" onClick={handleToggleModalAddCourse}>
+        <span className="adminCourses__modal-container-close"  onClick={handleToggleModalAddCourse}>
           <CloseIcon fill="white" />
         </span>
         <h3>{language === "es" ? "Agregar curso" : "Add course"}</h3>
         <form onSubmit={handleSubmit}>
         
-          <input onChange={handleChange} placeholder={ language === "es" ? "Título" : "Title"  } type="text" className="input_title_course" name="title" id="title" />
+          <input  required  onChange={handleChange} placeholder={ language === "es" ? "Título" : "Title"  } type="text" className="input_title_course" name="title" id="title" />
         
  
        
           <figure>
             <div onClick={() => document.getElementById("fileInput_img-course").click()} className="photo_edit">
-              <input type="file" accept="image/*" name="img" onChange={handleChange} style={{ display: "none" }} id="fileInput_img-course" />
+              <input required type="file" accept="image/*" name="img" onChange={handleChange} style={{ display: "none" }} id="fileInput_img-course" />
               <CameraIcon width="2rem" height="2rem" fill="#a0a0a0" />
             </div>
             <img src={selectedImage || URLCourseExample } className="" srcset="" />
 
           </figure>
 
-          <textarea onChange={handleChange} placeholder={language === "es" ? "Descripción" : "Description"} name="description" id="description"></textarea>
-          <input onChange={handleChange} type="number" className="input_title_course" placeholder="price" />
-          <button type="submit">{language === "es" ? "Agregar" : "Add"}</button>
+          <textarea required onChange={handleChange} placeholder={language === "es" ? "Descripción sobre el curso" : "Description about the course"} name="description" id="description"></textarea>
+          <input required onChange={handleChange} type="number" className="input_title_course" placeholder="Precio. ej: $200" />
+          {
+            loading ? <Spinner /> :   <button type="submit">{language === "es" ? "Agregar" : "Add"} </button>
+          }
+     
+        
         </form>
       </div>
     </div>
