@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 //components
 import { Home } from "./comp/home/Home";
-import { Aboutme } from "./comp/Aboutme";
+
 import { Header } from "./comp/header/Header";
 import { Courses } from "./comp/courses/Courses";
 import { Profile } from "./comp/profile/Profile";

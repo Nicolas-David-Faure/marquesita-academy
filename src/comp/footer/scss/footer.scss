@@ -1,12 +1,68 @@
-.footer__{
-  
-  &container{
-    min-height: 5rem;
-    width: 100%;
-    background-color: rgb(97, 10, 10);
-    margin-bottom:5rem ;
-    margin-top: 1rem;
+.footer__container {
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
+  color: goldenrod; // Oro
+  padding: 20px;
+  border-top: 1px dashed goldenrod; // Borde dorado
+  .footer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .footer__social,
+    .footer__contact {
+      margin-bottom: 20px;
+
+      h4 {
+        margin-bottom: 10px;
+        color: goldenrod;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 5px;
+
+          a {
+            color: goldenrod;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      p {
+        margin: 5px 0;
+      }
+    }
   }
 
+  // Ajustes para pantallas más grandes
+  @media (min-width: 768px) {
+    .footer__content {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
+      text-align: left;
 
+      .footer__social,
+      .footer__contact {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Sección de copyright
+  & > div:last-child {
+    text-align: center;
+    margin-top: 20px;
+    color: goldenrod;
+    margin-bottom: 50px;
+  }
 }

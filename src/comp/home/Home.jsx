@@ -12,12 +12,8 @@ import { TitleHome } from "./TitleHome";
 import { sliderQuotes } from "../../mooks/home";
 import { Footer } from "../footer/Footer";
 
-
 //img
-import logoCertificate from '../../assets/img/ecouncil-logo.png' 
-
-
-
+import logoCertificate from "../../assets/img/ecouncil-logo.png";
 
 export const Home = ({ language, userLogin }) => {
   const { user } = useSelector((store) => store.authSlice);
@@ -27,31 +23,13 @@ export const Home = ({ language, userLogin }) => {
   return (
     <>
       <div className="home__container">
-        {
-          user && <TitleHome user={user} language={language} />
-        }
-       
+        {user && <TitleHome user={user} language={language} />}
 
         <Banner />
-       
+
         <section className="home__section-1">
-
-          <div className="home__section_part-1">
-
-            <img src={logoCertificate} alt="" />
-
-            <article className="home__section_part-1_article">
-
-            <h4>Cursos certificados de lash training</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique ducimus voluptate eos dolore eaque nesciunt, ratione reprehenderit perferendis aut, et velit, nobis aspernatur cumque accusantium facilis unde doloribus iste saepe?</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique ducimus voluptate eos dolore eaque nesciunt, ratione reprehenderit perferendis aut, et velit, nobis aspernatur cumque accusantium facilis unde doloribus iste saepe?</p>
-            </article>
-            <button className="home__section_part-1_viewCourseBtn" >
-              Ver cursos
-            </button>
-          </div>
-
           <Slider content={sliderQuotes} format="text" />
+          <Certificate language={language} />
 
         </section>
         {/* <!-- Slider main container --> */}
@@ -59,5 +37,28 @@ export const Home = ({ language, userLogin }) => {
         <Footer />
       </div>
     </>
+  );
+};
+const Certificate = ({ language }) => {
+  return (
+    <div className="home__section_part-1">
+      <img src={logoCertificate} alt="" />
+
+      <article className="home__section_part-1_article">
+        <h4>Cursos certificados de lash training</h4>
+        <p>
+          Los cursos son impartidos por Natalia Díaz, experta en extensiones de
+          pestañas con años de experiencia en el sector. Aprende técnicas como
+          volumen ruso, técnica clásica y megavolumen, y obtén una certificación
+          reconocida.
+        </p>
+        <p>
+          Únete a Natalia Díaz y lleva tu carrera al siguiente nivel. Los cursos
+          incluyen materiales, prácticas en vivo y soporte continuo después de
+          la capacitación.
+        </p>
+      </article>
+      <button className="home__section_part-1_viewCourseBtn">Ver cursos</button>
+    </div>
   );
 };
