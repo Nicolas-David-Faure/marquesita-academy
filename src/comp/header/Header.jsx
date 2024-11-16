@@ -17,10 +17,12 @@ import logoInstagram from "../../assets/img/instagramLogo.svg";
 import UserIcon from "../../commons/icons/UserIcon";
 import { ModalAuth } from "../auth/ModalAuth";
 import { ModalUserOptions } from "../user/ModalUserOptions";
+import { useNavigate } from "react-router-dom";
 
 export const Header = ({ language }) => {
   const authState = useSelector((store) => store.authSlice);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className="header__container">
@@ -28,6 +30,7 @@ export const Header = ({ language }) => {
         className="header__logo"
         src={logoCorona}
         alt="marquesita academy logo"
+        onClick={() => navigate("/")}
       />
       <NavMarquesita language={language} />
 
