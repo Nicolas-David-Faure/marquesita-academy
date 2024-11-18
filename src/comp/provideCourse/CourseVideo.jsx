@@ -7,7 +7,7 @@ export const CourseVideo = ({ urlImgVideo, title , index , description }) => {
   return (
     <li className="coursemodule__videos_video">
       <figcaption>
-        <video  src={urlImgVideo}  controls  donwload="video/mp4" alt="img" />
+        <video  src={urlImgVideo}   controls  alt="img" />
       </figcaption>
       <div className="coursemodule__videos_video_resume">
         <header>

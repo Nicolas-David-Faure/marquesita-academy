@@ -23,7 +23,7 @@ export const CourseModule = ({
     trash: false,
   });
 
-  const [showVideos, setShowVideos] = useState(false);
+  const [showVideos, setShowVideos] = useState(true);
   
   const handleManageStateIcon = (state, name) => {
     setIconsCursorPointer((prev) => ({ ...prev, [name]: state }));
@@ -31,6 +31,7 @@ export const CourseModule = ({
 
 
   console.log(module);
+
 
   return (
     <section className="coursemodule__container">
@@ -40,13 +41,28 @@ export const CourseModule = ({
           onMouseLeave={() => handleManageStateIcon(false, "chevronDown")}
           className="coursemodule__container_icon"
         >
-          <div onClick={() => setShowVideos((prev) => !prev)}>
+          <motion.div 
+          initial={{ rotate: 0 }}
+          animate={{ rotate: !showVideos ? 270 : 360 }}
+          transition={{ duration: 0.3 }}
+         
+          onClick={() => setShowVideos((prev) => !prev)}>
+          
             <ChevronDown
               fill={iconsCursorPointer.chevronDown ? "#f2f2f2" : "#afafaf"}
             />
-          </div>
+          </motion.div>
         </motion.span>
-        <h3>{module.title}</h3>
+
+        <div className="coursemodule__container_title">
+
+          <h3>{module.title}</h3>
+         
+        </div>
+
+
+
+
         <span className="coursemodule__container_icons">
           <div
             onMouseEnter={() => handleManageStateIcon(true, "penEdit")}

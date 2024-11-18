@@ -1,11 +1,19 @@
-import { useRef , useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { handleUploadVideo } from "../../config/services/admin/handleUploadVideo";
 import { PlusIcon } from "../../commons/icons/PlusIcon";
-
-export const AddNewVideo = ({ language, module, course, handleModuleAdded }) => {
+import { IoCloudUploadOutline } from "react-icons/io5";
+import { Spinner } from "../../commons/otros/Spinner";
+export const AddNewVideo = ({
+  language,
+  module,
+  course,
+  handleModuleAdded,
+}) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
+  console.log(module);
   const initialState = {
     file: null,
     name: null,
@@ -19,6 +27,7 @@ export const AddNewVideo = ({ language, module, course, handleModuleAdded }) => 
     name: null,
     loading: false,
     extension: null,
+    description: null,
   });
 
   const handleChangeAddNewVideo = (e) => {
@@ -27,11 +36,12 @@ export const AddNewVideo = ({ language, module, course, handleModuleAdded }) => 
   };
 
   const buttonAdd = {
-    en: video.loading ? "Loading.." : "Add",
-    es: video.loading ? "Cargando.." : "Añadir",
+    en: video.loading ? "Loading.." : "Upload",
+    es: video.loading ? "Cargando.." : "Subir",
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const courseName = course.title.replace(/ /g, "_").toLowerCase();
     const moduleName = module.title.replace(/ /g, "_").toLowerCase();
     const path = `courses/${courseName}/${moduleName}/${video.name}.${video.extension}`;
@@ -43,9 +53,11 @@ export const AddNewVideo = ({ language, module, course, handleModuleAdded }) => 
       fileName: video.name + "." + video.extension,
       path,
       dispatch,
+      description: video.description,
     });
     handleModuleAdded();
     setVideo(initialState);
+    setLoading(false);
   };
 
   return (
@@ -82,10 +94,23 @@ export const AddNewVideo = ({ language, module, course, handleModuleAdded }) => 
             name="name"
             className={video.loading ? "loading__input" : ""}
           />
+          <textarea
+            onChange={(e) =>
+              setVideo((prev) => ({ ...prev, description: e.target.value }))
+            }
+            name="description"
+            required
+            placeholder="Descripción del video"
+            className={video.loading ? "loading__input" : ""}
+          ></textarea>
 
-          <button className={video.loading ? "greyBtn" : ""} type="submit">
-            {buttonAdd[language]}
-          </button>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <button className={video.loading ? "greyBtn" : ""} type="submit">
+              {buttonAdd[language]} <IoCloudUploadOutline />
+            </button>
+          )}
         </form>
       )}
     </li>

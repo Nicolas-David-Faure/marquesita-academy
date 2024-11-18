@@ -16,7 +16,7 @@ export const CourseModules = ({
 }) => {
   return (
     <section className="courseModules">
-      <h3>Módulos</h3>
+      <h2>Módulos</h2>
 
       {course.modules?.length ? (
         course.modules.map((module) => (
