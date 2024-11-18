@@ -12,8 +12,6 @@ import { ModalAuth } from "./ModalAuth";
 export const Auth = ({ language }) => {
   const authState = useSelector((state) => state.authSlice);
 
-
-
   return (
     <div className="auth__container">
       <AuthBtn type={"login"} title={language === "es" ? "Iniciar" : "Login"} />
