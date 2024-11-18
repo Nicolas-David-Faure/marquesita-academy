@@ -14,6 +14,8 @@ export const CourseItem = ({
   rating,
   studentsEnrolled,
 }) => {
+
+
   return (
     <li className="courseItem">
       <a href={`/course/${id}`} className="courseItem__link">
@@ -31,11 +33,11 @@ export const CourseItem = ({
           <div className="courseItem__price">
             {discount ? (
               <>
-                <span className="courseItem__price--discounted">€{discount}</span>
-                <span className="courseItem__price--original">€{price}</span>
+                <span className="courseItem__price--discounted">${discount}</span>
+                <span className="courseItem__price--original">${price}</span>
               </>
             ) : (
-              <span className="courseItem__price--final">€{price}</span>
+              <span className="courseItem__price--final">${price}</span>
             )}
           </div>
         </div>

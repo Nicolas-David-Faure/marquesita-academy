@@ -110,9 +110,13 @@ const AdminCoursesModalAddCourse = ({ language, handleToggleModalAddCourse }) =>
     });
   };
 
+
+
+
   const handleSubmit = async (e) => { 
 
     e.preventDefault();
+
     setLoading(true);
     await addCourseToDb(course);
       dispatch(toggleCourseAdded());  
@@ -122,6 +126,8 @@ const AdminCoursesModalAddCourse = ({ language, handleToggleModalAddCourse }) =>
 
 
 
+
+    
   return (
     <div className="adminCourses__modal">
       <div className="adminCourses__modal-container">
@@ -145,7 +151,7 @@ const AdminCoursesModalAddCourse = ({ language, handleToggleModalAddCourse }) =>
           </figure>
 
           <textarea required onChange={handleChange} placeholder={language === "es" ? "Descripción sobre el curso" : "Description about the course"} name="description" id="description"></textarea>
-          <input required onChange={handleChange} type="number" className="input_title_course" placeholder="Precio. ej: $200" />
+          <input required name="price" onChange={handleChange} type="number" className="input_title_course" placeholder="Precio. ej: $200" />
           {
             loading ? <Spinner /> :   <button type="submit">{language === "es" ? "Agregar" : "Add"} </button>
           }
