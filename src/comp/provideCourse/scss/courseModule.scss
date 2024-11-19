@@ -24,6 +24,15 @@
     }
     &_icon {
       left: 5px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+
+      &_text{
+        font-size: .7rem;
+      }
     }
     &_icons {
       right: 5px;

@@ -1,5 +1,7 @@
 import React from "react";
 import "./scss/courseItem.scss";
+//utils
+import { handleTruncateString } from "../../utils/";
 import { FaStar } from "react-icons/fa";
 
 export const CourseItem = ({
@@ -10,11 +12,13 @@ export const CourseItem = ({
   active,
   description,
   title,
-  instructor,
-  rating,
-  studentsEnrolled,
+
 }) => {
 
+  const instructor = "Natalia Diaz"
+  const rating = 4
+
+  
 
   return (
     <li className="courseItem">
@@ -28,7 +32,7 @@ export const CourseItem = ({
           <div className="courseItem__rating">
             <span className="courseItem__rating-value">{rating}</span>
             <FaStar className="courseItem__star" />
-            <span className="courseItem__students">({studentsEnrolled})</span>
+            <span className="courseItem__students">({ handleTruncateString(description, 50) })</span>
           </div>
           <div className="courseItem__price">
             {discount ? (
