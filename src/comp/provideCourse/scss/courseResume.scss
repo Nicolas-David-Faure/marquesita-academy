@@ -3,23 +3,23 @@
   min-height: 20rem;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.093);
-  border-radius: 1rem;
+  border-radius: 5px;
   margin-top: 1rem;
-
+  border: 1px solid rgb(76, 76, 76);
   &_content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    
     figure {
       max-width: auto;
-      
       height: 100%;
       img {
         border-radius: 1rem;
-        width:auto;
-        height: 20rem ;
+        width: auto;
+        height: 20rem;
       }
     }
   }
@@ -30,11 +30,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 0;
         figure {
           max-width: 100%;
+          border-radius: 0;
+         
           img {
             width: 100%;
             height: auto;
+            border-radius: 0;
           }
         }
       }
@@ -45,17 +49,10 @@
 
 .courseResume__courseDesctiption{
   width: 100%;
-  height: 20rem;
+  height: auto;
   box-sizing: border-box;
-
-
-
   border-radius: 5px ;
-
   text-align: start;
-
   padding: 0 1rem;
-
   overflow-y: auto;
-  
 }

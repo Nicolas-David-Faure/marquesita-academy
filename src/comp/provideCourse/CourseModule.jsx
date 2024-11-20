@@ -34,7 +34,7 @@ export const CourseModule = ({
     <section className="coursemodule__container">
       <div className="coursemodule__module">
        
-          <>
+        
             <motion.span
               onMouseEnter={() => handleManageStateIcon(true, "chevronDown")}
               onMouseLeave={() => handleManageStateIcon(false, "chevronDown")}
@@ -53,7 +53,7 @@ export const CourseModule = ({
               </motion.div>
                 <p className="coursemodule__container_icon_text">({module.videos.length} {module.videos?.length > 1 ? "Videos" : "Video"})</p>
             </motion.span>
-          </>
+         
         
 
         <div className="coursemodule__container_title">

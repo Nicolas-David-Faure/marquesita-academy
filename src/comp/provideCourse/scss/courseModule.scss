@@ -15,7 +15,7 @@
     border: 1px solid rgb(76, 76, 76);
     
     &_icon ,   &_icons {
-      position: absolute;
+
       height: 100%;
       display: flex;
       align-items: center;
@@ -45,7 +45,7 @@
 
 
     &_title {
-      font-size: 1.5rem;
+      font-size: 1rem;
       margin: 0;
       padding: 0;
       text-align: center;
@@ -62,9 +62,10 @@
     position: relative;
     border-bottom: 1px solid rgb(76, 76, 76);
     
-   
+    box-sizing: border-box;
+    padding: 0 .3rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
