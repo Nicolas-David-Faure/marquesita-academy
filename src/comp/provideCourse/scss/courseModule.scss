@@ -101,18 +101,16 @@
         margin: 0;
         padding: 0;
         text-align: center;
-       background-color: goldenrod;
-       padding: .5rem;
-       border-radius: 100%;
+        background-color: goldenrod;
+        padding: .5rem;
+        border-radius: 100%;
         display: flex;
         position: absolute;
         top:-20px;
         right: 2px;
-        :hover{
-          text-decoration: underline;
-
-          
-        }
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+        
       }
         &_btn{
           display: flex;
