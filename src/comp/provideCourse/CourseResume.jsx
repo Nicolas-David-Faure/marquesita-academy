@@ -21,7 +21,7 @@ const CourseResumeImg = ({ course }) => {
   return (
     <figure>
       <img src={course.imgURL} alt={course.description} />
-      <figcaption></figcaption>
+     
     </figure>
   );
 };

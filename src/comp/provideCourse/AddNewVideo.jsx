@@ -4,6 +4,7 @@ import { handleUploadVideo } from "../../config/services/admin/handleUploadVideo
 import { PlusIcon } from "../../commons/icons/PlusIcon";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { Spinner } from "../../commons/otros/Spinner";
+import { CloseIcon } from "../../commons/icons/CloseIcon";
 export const AddNewVideo = ({
   language,
   module,
@@ -62,7 +63,10 @@ export const AddNewVideo = ({
 
   return (
     <li className="coursemodule__videos_add">
+
       {!video.file ? (
+     
+
         <button
           className="coursemodule__videos_add_btn"
           onClick={() => inputAddVideoRef.current.click()}
@@ -78,6 +82,11 @@ export const AddNewVideo = ({
           Añadir video
         </button>
       ) : (
+        <>
+        <span 
+        onClick={() => setVideo(initialState)}
+        className="coursemodule__videos_add_closeicon"><CloseIcon /></span>
+     
         <form
           onSubmit={handleSubmit}
           className="coursemodule__videos_add_container"
@@ -112,6 +121,7 @@ export const AddNewVideo = ({
             </button>
           )}
         </form>
+      </>
       )}
     </li>
   );
